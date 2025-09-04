@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f030e4ca4366894429f51693ac1e1435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  babyTimer: 1
+  babyTimer: 5
   cribList:
   - {fileID: 1414537633}
   - {fileID: 2047404989}

@@ -67,7 +67,7 @@ public class Nursemanager : MonoBehaviour
 
         //Makes the nurse and sends them on their way
         Nursemovement newNurse = Instantiate(nursePrefab).GetComponent<Nursemovement>();
-        newNurse.AddPath(path);
+        newNurse.AddPath(path, targetCrib);
     }
 
     private bool AtDestination(Nursepathnode x, Crib y)

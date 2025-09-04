@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Crib : MonoBehaviour
 {
+    public bool nurseOnTheWay = false;
     [SerializeField] Sprite empty, full;
     [SerializeField] Opencrib openCrib;
     private SpriteRenderer cribSprite;
