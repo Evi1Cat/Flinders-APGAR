@@ -21,7 +21,7 @@ public class BabyInputStream : MonoBehaviour
     {
         if (activeGame)
         {
-            timer -= Time.deltaTime;
+            timer -= Time.deltaTime * GameManager.instance.timeSpeedModifier;
             //Debug.Log(timer);
             if (timer < 0)
             {
@@ -32,12 +32,13 @@ public class BabyInputStream : MonoBehaviour
                 int i = index;
                 while (!roomFound)
                 {
-                    Debug.Log(cribList[i].Occupied());
+                    //Debug.Log(cribList[i].Occupied());
                     if (!cribList[i].Occupied())
                     {
                         roomFound = true; //If there is room in one of the cribs
                         cribList[i].NewBaby();
-                        Debug.Log("baby!");
+                        Nursemanager.instance.MakePath(cribList[i]);
+                        //Debug.Log("baby!");
                     }
                     else
                     {

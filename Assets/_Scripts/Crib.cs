@@ -37,7 +37,7 @@ public class Crib : MonoBehaviour
         }
         baby = new Baby(OTT(), x, OTT(), OTT(), OTT());
         
-        Debug.Log(baby);
+        //Debug.Log(baby);
         cribSprite.sprite = full;
     }
 

@@ -41,5 +41,6 @@ public class Opencrib : MonoBehaviour
     public void RemoveBaby(int x)
     {
         openedCrib.ReleaseBaby(x);
+        gameObject.SetActive(false);
     }
 }
