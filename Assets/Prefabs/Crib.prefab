@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1344653fd828614a99b3a000de3a29f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nurseOnTheWay: 0
+  healthChance: 45
   empty: {fileID: -8388598466733130882, guid: e7e26743e8c77e14daefe29a8de6e035, type: 3}
   full: {fileID: -8840889746415585949, guid: b83a01252fc366b4b99687cc54840c1d, type: 3}
   openCrib: {fileID: 0}

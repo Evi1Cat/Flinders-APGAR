@@ -1,22 +1,61 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random; 
 
 public class Crib : MonoBehaviour
 {
     public bool nurseOnTheWay = false;
     [SerializeField] Sprite empty, full;
     [SerializeField] Opencrib openCrib;
+    private int checkIndex = 0;
+    public float babyTimer = 0f;
     private SpriteRenderer cribSprite;
     private Baby baby = null;
+    private List<CheckTime> APGAR_Check_Times = new List<CheckTime>();
     void Start()
     {
         cribSprite = gameObject.GetComponent<SpriteRenderer>();
         cribSprite.sprite = empty;
+
+        foreach (float x in GameManager.instance.babySettings.APGAR_Check_Times)
+        {
+            APGAR_Check_Times.Add(new CheckTime(x));
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (baby != null)
+        {
+            babyTimer += Time.deltaTime * GameManager.instance.timeSpeedModifier;
+            if (checkIndex < APGAR_Check_Times.Count)
+            {
+                if (APGAR_Check_Times[checkIndex].checkTime < babyTimer)
+                {
+                    int urgentCareInt = 3;
+                    if (checkIndex == APGAR_Check_Times.Count - 1)
+                    {
+                        urgentCareInt = 6;
+                    }
+                    if (baby.CheckAPGAR() <= urgentCareInt)
+                    {
+                        ReleaseBaby(1);
+                    }
+                    APGAR_Check_Times[checkIndex].checkedBySystem = true;
+                    checkIndex++;
+                }
+                else if (((checkIndex > 0 && ((APGAR_Check_Times[checkIndex].checkTime - APGAR_Check_Times[checkIndex - 1].checkTime) / 2) + APGAR_Check_Times[checkIndex - 1].checkTime < babyTimer)
+                || (checkIndex == 0 && APGAR_Check_Times[checkIndex].checkTime / 2 < babyTimer))
+                && !APGAR_Check_Times[checkIndex].updatedVitals)
+                {
+                    //add code to change baby's vitals
+                    //Debug.Log("Vitals updated");
+                    APGAR_Check_Times[checkIndex].updatedVitals = true;
+                }
+            }
+        }
     }
 
     public void OpenCrib()
@@ -27,6 +66,8 @@ public class Crib : MonoBehaviour
     public void NewBaby()
     {
         float x = 0;
+        babyTimer = 0;
+        checkIndex = 0;
         switch (OTT())
         {
             case 2:
@@ -37,7 +78,7 @@ public class Crib : MonoBehaviour
                 break;
         }
         baby = new Baby(OTT(), x, OTT(), OTT(), OTT());
-        
+
         //Debug.Log(baby);
         cribSprite.sprite = full;
     }
@@ -61,6 +102,30 @@ public class Crib : MonoBehaviour
 
     private int OTT()
     {
-        return Random.Range(0, 3);
+        bool loop = true;
+        int outNum = 2;
+        while (loop)
+        {
+            if (Random.Range(0, 101) > GameManager.instance.babySettings.healthChance && outNum > 0)
+            {
+                outNum -= 1;
+            }
+            else
+            {
+                loop = false;
+            }
+        }
+        return outNum;
+    }
+}
+
+public class CheckTime
+{
+    public float checkTime = 0f;
+    public bool checkedBySystem = false, updatedVitals = false;
+
+    public CheckTime(float x)
+    {
+        checkTime = x;
     }
 }

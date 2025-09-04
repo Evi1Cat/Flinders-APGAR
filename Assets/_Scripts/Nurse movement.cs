@@ -4,6 +4,7 @@ using Pixelplacement;
 
 public class Nursemovement : MonoBehaviour
 {
+    //[Range(0, 100)] public int curvePercent = 0;
     public TweenVars[] nurseTweens = new TweenVars[3];
     private Crib targetCrib = null;
     private List<Nursepathnode> path, pathBack = new List<Nursepathnode>();
@@ -21,6 +22,8 @@ public class Nursemovement : MonoBehaviour
 
     private void MoveToNextPoint()
     {
+        //Vector3 target = path[0].transform.position;
+
         if (path.Count > 1)
         {
             Tween.Position(transform, path[0].transform.position, nurseTweens[1].duration, nurseTweens[1].delay, nurseTweens[1].easeCurve, completeCallback: MoveToNextPoint);
