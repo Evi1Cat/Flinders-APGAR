@@ -24,7 +24,6 @@ public class Crib : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (baby != null)
@@ -95,11 +94,37 @@ public class Crib : MonoBehaviour
 
     public void ReleaseBaby(int x)
     {
-        //Logic for 
+        //Logic for a baby getting taken away
+        if (x == 1)//If baby was deemed healthy
+        {
+            if (baby.CheckAPGAR() > 6 && APGAR_Check_Times[1].checkTime < babyTimer)
+            {
+                GameManager.instance.Increase();
+            }
+            else
+            {
+                GameManager.instance.Decrease();
+            }
+        }
+        if(x == -1)//If baby was deemed unhealthy 
+        {
+            if (baby.CheckAPGAR() > 6)
+            {
+                GameManager.instance.Decrease();
+            }
+            else
+            {
+                GameManager.instance.Increase();
+            }
+        }
         baby = null;
         cribSprite.sprite = empty;
     }
 
+    /// <summary>
+    /// One to three
+    /// </summary>
+    /// <returns>Returns a random number from zero to two favouring higher numbers</returns>
     private int OTT()
     {
         bool loop = true;
