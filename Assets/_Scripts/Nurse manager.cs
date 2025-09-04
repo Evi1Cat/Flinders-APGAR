@@ -7,8 +7,8 @@ public class Nursemanager : MonoBehaviour
 {
     public static Nursemanager instance;
 
+    [SerializeField] private GameObject nursePrefab;
     [SerializeField] private Nursepathnode startNode;
-    private Nursepathnode[] path;
     void Start()
     {
         instance = this;
@@ -38,7 +38,7 @@ public class Nursemanager : MonoBehaviour
                 while (!pathfound)
                 {
                     //Debug.Log("Looking for path " + currentNode);
-                    path.Add(currentNode);
+                    path.Insert(0, currentNode);
                     if (currentNode.lastNode == null)
                     {
                         pathfound = true;
@@ -63,7 +63,11 @@ public class Nursemanager : MonoBehaviour
                 searched.Add(currentNode);
             }
         }
-        DebugPath(path);
+        //DebugPath(path);
+
+        //Makes the nurse and sends them on their way
+        Nursemovement newNurse = Instantiate(nursePrefab).GetComponent<Nursemovement>();
+        newNurse.AddPath(path);
     }
 
     private bool AtDestination(Nursepathnode x, Crib y)

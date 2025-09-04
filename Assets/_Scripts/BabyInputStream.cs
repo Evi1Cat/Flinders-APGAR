@@ -27,6 +27,7 @@ public class BabyInputStream : MonoBehaviour
             {
                 timer = babyTimer;
 
+                
                 int index = Random.Range(0, cribList.Length);
                 bool roomFound = false;
                 int i = index;

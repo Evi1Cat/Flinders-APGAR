@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f030e4ca4366894429f51693ac1e1435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  babyTimer: 5
+  babyTimer: 1
   cribList:
   - {fileID: 1414537633}
   - {fileID: 2047404989}
@@ -2979,6 +2979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c11970bd7c7184c8e62a28c746999b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nursePrefab: {fileID: 2780130809897648750, guid: 51bde4832e15dcd4c9ed2b3d8b8b5241, type: 3}
   startNode: {fileID: 58837061}
 --- !u!1 &1410160606
 GameObject:
