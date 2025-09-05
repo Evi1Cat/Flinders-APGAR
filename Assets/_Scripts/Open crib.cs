@@ -25,13 +25,16 @@ public class Opencrib : MonoBehaviour
 
     public void Open(Baby x, Crib refer)
     {
-        blueSkin.text = "" + x.Check_Apgar();
-        pulse.text = "" + Mathf.Floor(x.Check_aPgar());
-        irritability.text = "" + x.Check_apGar();
-        muscleTone.text = "" + x.Check_apgAr();
-        respiratory.text = "" + x.Check_apgaR();
-        gameObject.SetActive(true);
-        openedCrib = refer;
+        if(x != null)
+        {
+            blueSkin.text = "" + x.Check_Apgar();
+            pulse.text = "" + Mathf.Floor(x.Check_aPgar());
+            irritability.text = "" + x.Check_apGar();
+            muscleTone.text = "" + x.Check_apgAr();
+            respiratory.text = "" + x.Check_apgaR();
+            gameObject.SetActive(true);
+            openedCrib = refer;
+        }
     }
 
     /// <summary>

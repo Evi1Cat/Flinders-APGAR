@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public BabySettings babySettings = new BabySettings();
     public delegate void PointChange();
     public PointChange Increase, Decrease;
-    [SerializeField] private int points = 0;
+    public int points = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
