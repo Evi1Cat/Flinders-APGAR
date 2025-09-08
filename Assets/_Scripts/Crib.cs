@@ -31,7 +31,7 @@ public class Crib : MonoBehaviour
             babyTimer += Time.deltaTime * GameManager.instance.timeSpeedModifier;
             if (checkIndex < APGAR_Check_Times.Count)
             {
-                if (APGAR_Check_Times[checkIndex].checkTime < babyTimer)
+                if (APGAR_Check_Times[checkIndex].checkTime + (30*GameManager.instance.timeSpeedModifier)< babyTimer)
                 {
                     int urgentCareInt = 3;
                     if (checkIndex == APGAR_Check_Times.Count - 1)
@@ -52,6 +52,7 @@ public class Crib : MonoBehaviour
                     //add code to change baby's vitals
                     //Debug.Log("Vitals updated");
                     APGAR_Check_Times[checkIndex].updatedVitals = true;
+                    Debug.Log("Check baby " + gameObject.name);
                 }
             }
         }
@@ -97,7 +98,7 @@ public class Crib : MonoBehaviour
         //Logic for a baby getting taken away
         if (x == 1)//If baby was deemed healthy
         {
-            if (baby.CheckAPGAR() > 6 && APGAR_Check_Times[1].checkTime < babyTimer)
+            if (baby.CheckAPGAR() > 6 && APGAR_Check_Times[1].checkTime < babyTimer) // if the baby has an APGAR of 7+ after the first two checks
             {
                 GameManager.instance.Increase();
             }
@@ -108,13 +109,13 @@ public class Crib : MonoBehaviour
         }
         if(x == -1)//If baby was deemed unhealthy 
         {
-            if (baby.CheckAPGAR() > 6)
+            if ((baby.CheckAPGAR() <= 6 && APGAR_Check_Times[4].checkTime < babyTimer) || baby.CheckAPGAR() <= 3) // if the baby has an apgar of 6 or less after all the tests, or if the baby has an apgar of 3 or below
             {
-                GameManager.instance.Decrease();
+                GameManager.instance.Increase();
             }
             else
             {
-                GameManager.instance.Increase();
+                GameManager.instance.Decrease();
             }
         }
         baby = null;

@@ -8,6 +8,7 @@ public class Scoretext : MonoBehaviour
     {
         GameManager.instance.Increase += UpdateText;
         GameManager.instance.Decrease += UpdateText;
+        score.text = GameManager.instance.points + "";
     }
 
     // Update is called once per frame
