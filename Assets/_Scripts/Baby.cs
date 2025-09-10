@@ -60,4 +60,13 @@ public class Baby
     {
         return respiration;
     }
+
+    public void UpdateStats(int A, float P, int G, int M, int R)
+    {
+        skinBlue = A;
+        heartRate = P;
+        agitation = G;
+        muscleTone = M;
+        respiration = R;
+    }
 }

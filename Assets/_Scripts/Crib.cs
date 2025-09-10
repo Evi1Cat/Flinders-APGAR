@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random; 
+using Random = UnityEngine.Random;
 
 public class Crib : MonoBehaviour
 {
     public bool nurseOnTheWay = false;
+    public delegate void TimerTick(int time);
+    public TimerTick timerTick;
     [SerializeField] Sprite empty, full;
     [SerializeField] Opencrib openCrib;
     private int checkIndex = 0;
@@ -17,6 +19,7 @@ public class Crib : MonoBehaviour
     {
         cribSprite = gameObject.GetComponent<SpriteRenderer>();
         cribSprite.sprite = empty;
+        timerTick = TickUpdate;
 
         foreach (float x in GameManager.instance.babySettings.APGAR_Check_Times)
         {
@@ -29,9 +32,10 @@ public class Crib : MonoBehaviour
         if (baby != null)
         {
             babyTimer += Time.deltaTime * GameManager.instance.timeSpeedModifier;
+            timerTick((int)babyTimer);
             if (checkIndex < APGAR_Check_Times.Count)
             {
-                if (APGAR_Check_Times[checkIndex].checkTime + (30*GameManager.instance.timeSpeedModifier)< babyTimer)
+                if (APGAR_Check_Times[checkIndex].checkTime + (30 * GameManager.instance.timeSpeedModifier) < babyTimer)
                 {
                     int urgentCareInt = 3;
                     if (checkIndex == APGAR_Check_Times.Count - 1)
@@ -49,18 +53,27 @@ public class Crib : MonoBehaviour
                 || (checkIndex == 0 && APGAR_Check_Times[checkIndex].checkTime / 2 < babyTimer))
                 && !APGAR_Check_Times[checkIndex].updatedVitals)
                 {
-                    //add code to change baby's vitals
+                    UpdateHealth();
                     //Debug.Log("Vitals updated");
                     APGAR_Check_Times[checkIndex].updatedVitals = true;
-                    Debug.Log("Check baby " + gameObject.name);
+                    //Debug.Log("Check baby " + gameObject.name);
                 }
             }
         }
     }
 
+    void TickUpdate(int x)
+    {
+
+    }
+
     public void OpenCrib()
     {
         openCrib.Open(baby, this);
+    }
+    public void CloseCrib()
+    {
+        openCrib.Close();
     }
 
     public void NewBaby()
@@ -107,7 +120,7 @@ public class Crib : MonoBehaviour
                 GameManager.instance.Decrease();
             }
         }
-        if(x == -1)//If baby was deemed unhealthy 
+        if (x == -1)//If baby was deemed unhealthy 
         {
             if ((baby.CheckAPGAR() <= 6 && APGAR_Check_Times[4].checkTime < babyTimer) || baby.CheckAPGAR() <= 3) // if the baby has an apgar of 6 or less after all the tests, or if the baby has an apgar of 3 or below
             {
@@ -132,7 +145,7 @@ public class Crib : MonoBehaviour
         int outNum = 2;
         while (loop)
         {
-            if (Random.Range(0, 101) > GameManager.instance.babySettings.healthChance && outNum > 0)
+            if (Random.Range(0, 101) > GameManager.instance.babySettings.initialGoodHealthChance && outNum > 0)
             {
                 outNum -= 1;
             }
@@ -142,6 +155,68 @@ public class Crib : MonoBehaviour
             }
         }
         return outNum;
+    }
+    
+    public void UpdateHealth()
+    {
+        if (Random.Range(0f, 100f) < GameManager.instance.babySettings.healthChangeChance)
+        {
+            int change = -1;
+            if (Random.Range(0f, 100f) < GameManager.instance.babySettings.goodHealthChangeChance)//Baby gets healthier
+            {
+                change = 1;
+            }
+
+            int[] x = new int[5];
+            x[0] = baby.Check_Apgar();
+            switch (baby.Check_aPgar())
+            {
+                case > 100:
+                    x[1] = 2;
+                    break;
+                case > 0:
+                    x[1] = 1;
+                    break;
+                case 0:
+                    x[1] = 0;
+                    break;
+            }
+            x[2] = baby.Check_apGar();
+            x[3] = baby.Check_apgAr();
+            x[4] = baby.Check_apgaR();
+
+            for (int i = 0; i < x.Length; i++)
+            {
+                bool loop = true;
+                while (loop)
+                {
+                    if (Random.Range(0f, 100f) < GameManager.instance.babySettings.symptomChangeChance && x[i] < 2)
+                    {
+                        x[i] += change;
+                    }
+                    else
+                    {
+                        loop = false;
+                    }
+                }
+            }
+
+            baby.UpdateStats(x[0], HeartRateConversion(x[1]), x[2], x[3], x[4]);
+        }
+    }
+    private float HeartRateConversion(int x)
+    {
+        float hr = 0f;
+        switch (x)
+        {
+            case 2:
+                hr = Random.Range(100f, 160f);
+                break;
+            case 1:
+                hr = Random.Range(1f, 99f);
+                break;
+        }
+        return hr;
     }
 }
 

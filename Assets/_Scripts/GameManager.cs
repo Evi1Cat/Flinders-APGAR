@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 public class BabySettings
 {
     [SerializeField] public float[] APGAR_Check_Times;
-    [SerializeField][Range(0, 100)] public int healthChance = 60;
+    [SerializeField][Range(0, 100)] public int initialGoodHealthChance = 60, healthChangeChance = 60, goodHealthChangeChance = 50, symptomChangeChance = 35;
 }
 
 

@@ -1,14 +1,11 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class Opencrib : MonoBehaviour
 {
 
-    [SerializeField] private TMP_Text blueSkin;
-    [SerializeField] private TMP_Text pulse;
-    [SerializeField] private TMP_Text irritability;
-    [SerializeField] private TMP_Text muscleTone;
-    [SerializeField] private TMP_Text respiratory;
+    [SerializeField] private TMP_Text blueSkin, pulse, irritability, muscleTone, respiratory, timerText;
 
     private Crib openedCrib = null;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,7 +22,7 @@ public class Opencrib : MonoBehaviour
 
     public void Open(Baby x, Crib refer)
     {
-        if(x != null)
+        if (x != null)
         {
             blueSkin.text = "" + x.Check_Apgar();
             pulse.text = "" + Mathf.Floor(x.Check_aPgar());
@@ -34,7 +31,14 @@ public class Opencrib : MonoBehaviour
             respiratory.text = "" + x.Check_apgaR();
             gameObject.SetActive(true);
             openedCrib = refer;
+            openedCrib.timerTick += UpdateTime;
         }
+    }
+
+    public void Close()
+    {
+        openedCrib.timerTick -= UpdateTime;
+        gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -45,5 +49,16 @@ public class Opencrib : MonoBehaviour
     {
         openedCrib.ReleaseBaby(x);
         gameObject.SetActive(false);
+    }
+
+    private void UpdateTime(int timeInSeconds)
+    {
+        int mins = (int)Mathf.Floor((float)timeInSeconds / 60f);
+        String seconds = timeInSeconds - (mins * 60)+"";
+        if (int.Parse(seconds) < 10)
+        {
+            seconds = 0 + seconds;
+        }
+        timerText.text = mins + ":" + seconds;
     }
 }
