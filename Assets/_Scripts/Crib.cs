@@ -33,16 +33,11 @@ public class Crib : MonoBehaviour
         {
             babyTimer += Time.deltaTime * GameManager.instance.timeSpeedModifier;
             timerTick((int)babyTimer);
-            if (checkIndex < APGAR_Check_Times.Count)
+            if (checkIndex < APGAR_Check_Times.Count) // if there are more APGAR checks to do
             {
-                if (APGAR_Check_Times[checkIndex].checkTime + (30 * GameManager.instance.timeSpeedModifier) < babyTimer)
+                if (APGAR_Check_Times[checkIndex].checkTime + (GameManager.instance.babySettings.lastCHeckGraceTime * GameManager.instance.timeSpeedModifier) < babyTimer) //if the current check time has passed
                 {
-                    int urgentCareInt = 3;
-                    if (checkIndex == APGAR_Check_Times.Count - 1)
-                    {
-                        urgentCareInt = 6;
-                    }
-                    if (baby.CheckAPGAR() <= urgentCareInt)
+                    if (BabyNeedsUrgentCare())
                     {
                         ReleaseBaby(1);
                     }
@@ -51,12 +46,25 @@ public class Crib : MonoBehaviour
                 }
                 else if (((checkIndex > 0 && ((APGAR_Check_Times[checkIndex].checkTime - APGAR_Check_Times[checkIndex - 1].checkTime) / 2) + APGAR_Check_Times[checkIndex - 1].checkTime < babyTimer)
                 || (checkIndex == 0 && APGAR_Check_Times[checkIndex].checkTime / 2 < babyTimer))
-                && !APGAR_Check_Times[checkIndex].updatedVitals)
+                && !APGAR_Check_Times[checkIndex].updatedVitals) //if its half way to the next check time and it hasnt already been updated, then update the babys vitals
                 {
                     UpdateHealth();
                     //Debug.Log("Vitals updated");
                     APGAR_Check_Times[checkIndex].updatedVitals = true;
                     //Debug.Log("Check baby " + gameObject.name);
+                }
+            }
+            else if (APGAR_Check_Times[APGAR_Check_Times.Count-1].checkTime + (30 * GameManager.instance.timeSpeedModifier) < babyTimer)
+            {
+                //add code for baby to be taken away
+                openCrib.Close();
+                if(BabyNeedsUrgentCare())
+                {
+                    ReleaseBaby(1);
+                }
+                else
+                {
+                    ReleaseBaby(-1);
                 }
             }
         }
@@ -111,7 +119,7 @@ public class Crib : MonoBehaviour
         //Logic for a baby getting taken away
         if (x == 1)//If baby was deemed healthy
         {
-            if (baby.CheckAPGAR() > 6 && APGAR_Check_Times[1].checkTime < babyTimer) // if the baby has an APGAR of 7+ after the first two checks
+            if (APGAR_Check_Times[1].checkTime < babyTimer && !BabyNeedsUrgentCare()) // if the baby has an APGAR of 7+ after the first two checks
             {
                 GameManager.instance.Increase();
             }
@@ -122,7 +130,7 @@ public class Crib : MonoBehaviour
         }
         if (x == -1)//If baby was deemed unhealthy 
         {
-            if ((baby.CheckAPGAR() <= 6 && APGAR_Check_Times[4].checkTime < babyTimer) || baby.CheckAPGAR() <= 3) // if the baby has an apgar of 6 or less after all the tests, or if the baby has an apgar of 3 or below
+            if (BabyNeedsUrgentCare()) // if the baby has an apgar of 6 or less after all the tests, or if the baby has an apgar of 3 or below
             {
                 GameManager.instance.Increase();
             }
@@ -190,7 +198,7 @@ public class Crib : MonoBehaviour
                 bool loop = true;
                 while (loop)
                 {
-                    if (Random.Range(0f, 100f) < GameManager.instance.babySettings.symptomChangeChance && x[i] < 2)
+                    if (Random.Range(0f, 100f) < GameManager.instance.babySettings.symptomChangeChance && x[i]+change <= 2 && x[i]+change >= 0)
                     {
                         x[i] += change;
                     }
@@ -218,6 +226,15 @@ public class Crib : MonoBehaviour
         }
         return hr;
     }
+
+    private bool BabyNeedsUrgentCare()
+    {
+        if((baby.CheckAPGAR() <= 6 && APGAR_Check_Times[APGAR_Check_Times.Count - 1].checkTime < babyTimer) || baby.CheckAPGAR() <= 3 || baby.Check_apgaR() <= 50 || baby.Check_aPgar() == 0)
+        {
+            return true;
+        }
+        return false;
+    }
 }
 
 public class CheckTime
@@ -230,3 +247,5 @@ public class CheckTime
         checkTime = x;
     }
 }
+
+
