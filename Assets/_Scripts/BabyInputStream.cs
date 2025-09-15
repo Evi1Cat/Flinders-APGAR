@@ -6,6 +6,7 @@ public class BabyInputStream : MonoBehaviour
     public static BabyInputStream instance;
 
     [SerializeField] private float babyTimer = 60;
+    [SerializeField][Range(0f, 1f)] private float spawnVariation;
     [SerializeField] private Crib[] cribList;
     private int babiesSaved = 0;
     private float timer = 0;
@@ -13,7 +14,7 @@ public class BabyInputStream : MonoBehaviour
     void Start()
     {
         instance = this;
-        timer = babyTimer;
+        timer = babyTimer * 0.1f;
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class BabyInputStream : MonoBehaviour
             //Debug.Log(timer);
             if (timer < 0)
             {
-                timer = babyTimer;
+                timer = babyTimer * Random.Range(1f - spawnVariation, 1f + spawnVariation);
 
                 
                 int index = Random.Range(0, cribList.Length);
