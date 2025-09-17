@@ -40,6 +40,7 @@ public class Crib : MonoBehaviour
                     if (BabyNeedsUrgentCare())
                     {
                         ReleaseBaby(1);
+                        Debug.Log("Baby removed bc negligence");
                     }
                     APGAR_Check_Times[checkIndex].checkedBySystem = true;
                     checkIndex++;
@@ -57,7 +58,6 @@ public class Crib : MonoBehaviour
             else if (APGAR_Check_Times[APGAR_Check_Times.Count-1].checkTime + (30 * GameManager.instance.timeSpeedModifier) < babyTimer)
             {
                 //add code for baby to be taken away
-                openCrib.Close();
                 if(BabyNeedsUrgentCare())
                 {
                     ReleaseBaby(1);
@@ -139,6 +139,7 @@ public class Crib : MonoBehaviour
                 GameManager.instance.Decrease();
             }
         }
+        openCrib.Close();
         baby = null;
         cribSprite.sprite = empty;
     }
