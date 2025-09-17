@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         Increase += GainPoints;
-        Decrease -= LosePoints;
+        Decrease += LosePoints;
     }
 
     // Update is called once per frame

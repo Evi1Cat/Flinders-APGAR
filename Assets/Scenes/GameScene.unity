@@ -3620,8 +3620,11 @@ MonoBehaviour:
     - 60
     - 300
     - 600
+<<<<<<< Updated upstream
     - 900
     - 1200
+=======
+>>>>>>> Stashed changes
     lastCHeckGraceTime: 10
     initialGoodHealthChance: 60
     healthChangeChance: 60

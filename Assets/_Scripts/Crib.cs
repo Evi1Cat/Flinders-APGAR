@@ -40,7 +40,11 @@ public class Crib : MonoBehaviour
                     if (BabyNeedsUrgentCare())
                     {
                         ReleaseBaby(1);
+<<<<<<< Updated upstream
                         Debug.Log("Baby removed bc negligence");
+=======
+                        Debug.Log("Baby was remove due to needing urgent care");
+>>>>>>> Stashed changes
                     }
                     APGAR_Check_Times[checkIndex].checkedBySystem = true;
                     checkIndex++;
@@ -55,7 +59,7 @@ public class Crib : MonoBehaviour
                     //Debug.Log("Check baby " + gameObject.name);
                 }
             }
-            else if (APGAR_Check_Times[APGAR_Check_Times.Count-1].checkTime + (30 * GameManager.instance.timeSpeedModifier) < babyTimer)
+            else if (APGAR_Check_Times[^1].checkTime + (30 * GameManager.instance.timeSpeedModifier) < babyTimer)
             {
                 //add code for baby to be taken away
                 if(BabyNeedsUrgentCare())
@@ -230,10 +234,30 @@ public class Crib : MonoBehaviour
 
     private bool BabyNeedsUrgentCare()
     {
-        if((baby.CheckAPGAR() <= 6 && APGAR_Check_Times[APGAR_Check_Times.Count - 1].checkTime < babyTimer) || baby.CheckAPGAR() <= 3 || baby.Check_apgaR() <= 50 || baby.Check_aPgar() == 0)
+        if((baby.CheckAPGAR() <= 6 && APGAR_Check_Times[^1].checkTime < babyTimer) || baby.CheckAPGAR() <= 3 || baby.Check_aPgar() <= 50 || baby.Check_apgaR() == 0)
         {
             return true;
         }
+        /*if (baby.CheckAPGAR() <= 6 && APGAR_Check_Times[^1].checkTime < babyTimer)
+        {
+            Debug.Log("baby.CheckAPGAR() <= 6 && APGAR_Check_Times[APGAR_Check_Times.Count].checkTime < babyTimer");
+            return true;
+        }
+        if (baby.CheckAPGAR() <= 3)
+        {
+            Debug.Log("baby.CheckAPGAR() <= 3");
+            return true;
+        }
+        if (baby.Check_apgaR() <= 50)
+        {
+            Debug.Log("baby.Check_apgaR() <= 50");
+            return true;
+        }
+        if (baby.Check_aPgar() == 0)
+        {
+            Debug.Log("baby.Check_aPgar() == 0");
+            return true;
+        }*/
         return false;
     }
 }

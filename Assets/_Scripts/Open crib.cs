@@ -8,6 +8,7 @@ public class Opencrib : MonoBehaviour
     [SerializeField] private TMP_Text blueSkin, pulse, irritability, muscleTone, respiratory, timerText;
 
     private Crib openedCrib = null;
+    private Baby currentBaby = null;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,20 +25,18 @@ public class Opencrib : MonoBehaviour
     {
         if (x != null)
         {
-            blueSkin.text = "" + x.Check_Apgar();
-            pulse.text = "" + Mathf.Floor(x.Check_aPgar());
-            irritability.text = "" + x.Check_apGar();
-            muscleTone.text = "" + x.Check_apgAr();
-            respiratory.text = "" + x.Check_apgaR();
             gameObject.SetActive(true);
             openedCrib = refer;
-            openedCrib.timerTick += UpdateTime;
+            currentBaby = x;
+            openedCrib.timerTick += UpdateText;
         }
     }
 
     public void Close()
     {
-        openedCrib.timerTick -= UpdateTime;
+        openedCrib.timerTick -= UpdateText;
+        openedCrib = null;
+        currentBaby = null;
         gameObject.SetActive(false);
     }
 
@@ -48,10 +47,10 @@ public class Opencrib : MonoBehaviour
     public void RemoveBaby(int x)
     {
         openedCrib.ReleaseBaby(x);
-        gameObject.SetActive(false);
+        Close();
     }
 
-    private void UpdateTime(int timeInSeconds)
+    private void UpdateText(int timeInSeconds)
     {
         int mins = (int)Mathf.Floor((float)timeInSeconds / 60f);
         String seconds = timeInSeconds - (mins * 60)+"";
@@ -60,5 +59,12 @@ public class Opencrib : MonoBehaviour
             seconds = 0 + seconds;
         }
         timerText.text = mins + ":" + seconds;
+
+        blueSkin.text = "" + currentBaby.Check_Apgar();
+        pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
+        irritability.text = "" + currentBaby.Check_apGar();
+        muscleTone.text = "" + currentBaby.Check_apgAr();
+        respiratory.text = "" + currentBaby.Check_apgaR();
+
     }
 }
