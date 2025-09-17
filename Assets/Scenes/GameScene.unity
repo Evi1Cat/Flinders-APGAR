@@ -3621,8 +3621,11 @@ MonoBehaviour:
     - 300
     - 600
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - 900
     - 1200
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     lastCHeckGraceTime: 10
