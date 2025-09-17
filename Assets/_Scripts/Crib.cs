@@ -42,7 +42,11 @@ public class Crib : MonoBehaviour
                         ReleaseBaby(1);
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                         Debug.Log("Baby removed bc negligence");
+=======
+                        Debug.Log("Baby was remove due to needing urgent care");
+>>>>>>> Stashed changes
 =======
                         Debug.Log("Baby was remove due to needing urgent care");
 >>>>>>> Stashed changes
