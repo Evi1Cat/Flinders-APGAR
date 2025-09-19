@@ -3586,7 +3586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f030e4ca4366894429f51693ac1e1435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  babyTimer: 100
+  babyTimer: 80
   spawnVariation: 0.133
   cribList:
   - {fileID: 1414537633}
@@ -3623,9 +3623,10 @@ MonoBehaviour:
     - 600
     lastCHeckGraceTime: 10
     initialGoodHealthChance: 60
-    healthChangeChance: 60
-    goodHealthChangeChance: 50
-    symptomChangeChance: 35
+    healthChangeChance: 70
+    goodHealthChangeChance: 55
+    symptomChangeChance: 40
+    preferredBabiesOnScreen: 4.5
   points: 0
 --- !u!1 &1294565079
 GameObject:

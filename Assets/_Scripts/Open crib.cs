@@ -34,7 +34,10 @@ public class Opencrib : MonoBehaviour
 
     public void Close()
     {
-        openedCrib.timerTick -= UpdateText;
+        if(openedCrib != null)
+        {
+            openedCrib.timerTick -= UpdateText;
+        }
         openedCrib = null;
         currentBaby = null;
         gameObject.SetActive(false);

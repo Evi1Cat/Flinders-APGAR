@@ -26,7 +26,16 @@ public class BabyInputStream : MonoBehaviour
             //Debug.Log(timer);
             if (timer < 0)
             {
-                timer = babyTimer * Random.Range(1f - spawnVariation, 1f + spawnVariation);
+                float currentBabies = 0;
+                foreach(Crib x in cribList)
+                {
+                    if (x.Occupied())
+                    {
+                        currentBabies++;
+                    }
+                }
+                timer = Mathf.Pow((currentBabies - GameManager.instance.babySettings.preferredBabiesOnScreen) / 1.2f, 3f) + (babyTimer * Random.Range(1f - spawnVariation, 1f + spawnVariation));
+                Debug.Log(timer);
 
                 
                 int index = Random.Range(0, cribList.Length);

@@ -41,6 +41,7 @@ public class BabySettings
     [SerializeField] public float[] APGAR_Check_Times;
     [SerializeField] public float lastCHeckGraceTime = 10f;
     [SerializeField][Range(0, 100)] public int initialGoodHealthChance = 60, healthChangeChance = 60, goodHealthChangeChance = 50, symptomChangeChance = 35;
+    [SerializeField][Range(0, 10)] public float preferredBabiesOnScreen = 4.5f;
 }
 
 
