@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] TweenVars fadeSettings;
     [SerializeField] AudioSource BGMusic;
     [SerializeField] AudioSetting[] soundEffectList, backgroundMusicList;
+    [SerializeField] AudioMixer masterMixer;
+    private float masterVol;
     private List<AudioSource> sfxPool = new List<AudioSource>();
     void Awake()
     {
@@ -113,6 +116,39 @@ public class AudioManager : MonoBehaviour
                 PlaySoundEffect(x.clip);
             }
         }
+    }
+    public void MuteMaster(bool x)
+    {
+        if (!x)
+        {
+            ChangeMixerVol("masterVolume", masterVol);
+        }
+        else
+        {
+            masterMixer.SetFloat("masterVolume", -80f);
+        }
+    }
+    public void ChangeMixerVol(string exposedName, float vol)
+    {
+        if(exposedName == "masterVolume")
+        {
+            masterMixer.SetFloat("masterVolume", masterVol);
+            masterVol = vol;
+        }
+        else
+        {
+            masterMixer.SetFloat(exposedName, vol);
+        }
+    }
+    public bool IsMuted()
+    {
+        float currentVol;
+        masterMixer.GetFloat("masterVolume", out currentVol);
+        if (currentVol == -80f)
+        {
+            return true;
+        }
+        return false;
     }
     private void FadeOut()
     {

@@ -203,7 +203,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 29.45
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 31.9
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 70442015}
   - component: {fileID: 70442014}
   - component: {fileID: 70442013}
+  - component: {fileID: 70442016}
   m_Layer: 0
   m_Name: Urgent care
   m_TagString: Untagged
@@ -635,6 +636,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 70442016}
+        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
+        m_MethodName: ButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &70442014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,6 +686,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70442011}
   m_CullTransparentMesh: 1
+--- !u!114 &70442016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70442011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d6c1dd258347141b3f987e430abe5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &84402243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,7 +1082,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 22.15
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1341,6 +1366,108 @@ Transform:
   m_Children: []
   m_Father: {fileID: 163381023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &607135270
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 617718180}
+    m_Modifications:
+    - target: {fileID: 385937441824890577, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_Name
+      value: Mute Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2.9999924
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+--- !u!224 &607135271 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2300532162197236038, guid: 296e03e97bbf952468035d1ff6b29416, type: 3}
+  m_PrefabInstance: {fileID: 607135270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &617718176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1561,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 607135271}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2062,6 +2190,7 @@ GameObject:
   - component: {fileID: 917938527}
   - component: {fileID: 917938526}
   - component: {fileID: 917938525}
+  - component: {fileID: 917938528}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -2145,6 +2274,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 917938528}
+        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
+        m_MethodName: ButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &917938526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2183,6 +2324,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917938523}
   m_CullTransparentMesh: 1
+--- !u!114 &917938528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917938523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d6c1dd258347141b3f987e430abe5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &928806619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2506,7 +2659,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 18
   m_fontSizeBase: 39.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2642,7 +2795,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 31.9
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2779,7 +2932,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 26.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3489,7 +3642,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 31.9
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3797,7 +3950,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 26.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3949,7 +4102,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 18
   m_fontSizeBase: 39.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4259,7 +4412,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 35
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4395,7 +4548,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 31.9
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4531,7 +4684,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 33.2
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4667,7 +4820,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 20.8
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4882,7 +5035,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 18
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5415,6 +5568,7 @@ GameObject:
   - component: {fileID: 1825777772}
   - component: {fileID: 1825777771}
   - component: {fileID: 1825777770}
+  - component: {fileID: 1825777773}
   m_Layer: 0
   m_Name: Good to go
   m_TagString: Untagged
@@ -5498,6 +5652,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1825777773}
+        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
+        m_MethodName: ButtonClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1825777771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5536,6 +5702,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825777768}
   m_CullTransparentMesh: 1
+--- !u!114 &1825777773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825777768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d6c1dd258347141b3f987e430abe5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1853411120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6441,7 +6619,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 35
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
