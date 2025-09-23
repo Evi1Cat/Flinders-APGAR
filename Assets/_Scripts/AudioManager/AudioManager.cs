@@ -1,6 +1,7 @@
 using Pixelplacement;
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -25,6 +26,10 @@ public class AudioManager : MonoBehaviour
         {
             AddToPool();
         }
+    }
+    private void Start()
+    {
+        ChangeTrack("MenuMusic");
     }
 
     // Update is called once per frame
@@ -57,20 +62,14 @@ public class AudioManager : MonoBehaviour
     }
     public void ChangeTrack(AudioClip newClip)
     {
-        FadeOut();
-        while(BGMusic.isPlaying)
+        if(BGMusic.clip != null)
         {
-
+            FadeOut(newClip);
         }
-        BGMusic.clip = newClip;
-        foreach (AudioSetting x in backgroundMusicList)
+        else
         {
-            if (x.clip == BGMusic.clip)
-            {
-                x.stoppedAtPosition = 0;
-            }
+            ChangeTrackIn(newClip);
         }
-        FadeIn();
     }
     public void ChangeTrack(string trackName)
     {
@@ -119,6 +118,10 @@ public class AudioManager : MonoBehaviour
     {
         Tween.Value(BGMusic.volume, 0f, SetVolume, fadeSettings.duration, 0f, fadeSettings.easeCurve, completeCallback: BGMusic.Pause);
     }
+    private void FadeOut(AudioClip newClip)
+    {
+        Tween.Value(BGMusic.volume, 0f, SetVolume, fadeSettings.duration, 0f, fadeSettings.easeCurve, completeCallback: ()=> ChangeTrackIn(newClip));
+    }
     private void FadeIn()
     {
         float targetVol = 0f;
@@ -142,6 +145,18 @@ public class AudioManager : MonoBehaviour
         x.transform.parent = transform;
         sfxPool.Add(x.GetComponent<AudioSource>());
         x.SetActive(false);
+    }
+    private void ChangeTrackIn(AudioClip newClip)
+    {
+        BGMusic.clip = newClip;
+        foreach (AudioSetting x in backgroundMusicList)
+        {
+            if (x.clip == BGMusic.clip)
+            {
+                x.stoppedAtPosition = 0;
+            }
+        }
+        FadeIn();
     }
 }
 
