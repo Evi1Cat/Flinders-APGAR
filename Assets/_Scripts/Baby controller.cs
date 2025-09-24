@@ -19,15 +19,15 @@ public class Babycontroller : MonoBehaviour
         Vector3 output = ColourToVector3(bestSkin);
         switch (blueLevel)
         {
-            case 0: //
+            case 0: 
                 output = (diff / (100 / variation)) + ColourToVector3(worstSkin);
-                return;
+                break;
             case 1:
                 output = (diff / 2) + ColourToVector3(worstSkin);
-                return;
+                break;
             case 2:
                 output = ColourToVector3(bestSkin) - (diff / (100 / variation));
-                return;
+                break;
         }
 
         babyBody.color = Vector3ToColour(output);
@@ -48,6 +48,7 @@ public class Babycontroller : MonoBehaviour
         output.r = x.x;
         output.g = x.y;
         output.b = x.z;
+        Debug.Log(output + ": " + output.r + " - " + output.g + " - " + output.b + " | (" + x + ")");
         return output;
     }
 }
