@@ -44,11 +44,13 @@ public class Nursemovement : MonoBehaviour
             targetCrib.NewBaby();
         }
         targetCrib.nurseOnTheWay = false;
+        targetCrib.CloseCrib();
         //Debug.Log(current);
         path = Nursemanager.instance.MakePath(home, current);
         //Debug.Log(path);
         Tween.Position(transform, path[0].transform.position, nurseTweens[0].duration, 0.5f, nurseTweens[0].easeCurve, completeCallback: Leave);
         path.RemoveAt(0);
+        
     }
     private void Leave()
     {

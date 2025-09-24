@@ -57,11 +57,15 @@ public class Opencrib : MonoBehaviour
         Nursemanager.instance.SendNurse(openedCrib, false);
         Close();
     }
+    public Crib GetCurrentlyOpenCrib()
+    {
+        return openedCrib;
+    }
 
     private void UpdateText(int timeInSeconds)
     {
         int mins = (int)Mathf.Floor((float)timeInSeconds / 60f);
-        String seconds = timeInSeconds - (mins * 60)+"";
+        String seconds = timeInSeconds - (mins * 60) + "";
         if (int.Parse(seconds) < 10)
         {
             seconds = 0 + seconds;

@@ -83,7 +83,10 @@ public class Crib : Nursepathnode
     }
     public void CloseCrib()
     {
-        openCrib.Close();
+        if (openCrib.GetCurrentlyOpenCrib() == this)
+        {
+            openCrib.Close();
+        }
     }
 
     public void NewBaby()
@@ -142,7 +145,6 @@ public class Crib : Nursepathnode
                 GameManager.instance.Decrease();
             }
         }
-        openCrib.Close();
         baby = null;
         cribSprite.sprite = empty;
     }
