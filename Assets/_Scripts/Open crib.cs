@@ -36,6 +36,7 @@ public class Opencrib : MonoBehaviour
     {
         if(openedCrib != null)
         {
+            //Debug.Log("test");
             openedCrib.timerTick -= UpdateText;
         }
         openedCrib = null;
@@ -67,11 +68,15 @@ public class Opencrib : MonoBehaviour
         }
         timerText.text = mins + ":" + seconds;
 
-        blueSkin.text = "" + currentBaby.Check_Apgar();
-        pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
-        irritability.text = "" + currentBaby.Check_apGar();
-        muscleTone.text = "" + currentBaby.Check_apgAr();
-        respiratory.text = "" + currentBaby.Check_apgaR();
+
+        if (openedCrib != null)
+        {
+            blueSkin.text = "" + currentBaby.Check_Apgar();
+            pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
+            irritability.text = "" + currentBaby.Check_apGar();
+            muscleTone.text = "" + currentBaby.Check_apgAr();
+            respiratory.text = "" + currentBaby.Check_apgaR();
+        }
 
     }
 }
