@@ -3563,8 +3563,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Babies saved:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6353de5ebb809fc4faae9da730c21abc, type: 2}
+  m_sharedMaterial: {fileID: 34721826918571043, guid: 6353de5ebb809fc4faae9da730c21abc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4415,7 +4415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nursePrefab: {fileID: 2780130809897648750, guid: 51bde4832e15dcd4c9ed2b3d8b8b5241, type: 3}
-  startNode: {fileID: 58837061}
+  deliverNode: {fileID: 58837061}
+  retrieveNode: {fileID: 1013962568}
 --- !u!1001 &1413280294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6808,8 +6809,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 999
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6353de5ebb809fc4faae9da730c21abc, type: 2}
+  m_sharedMaterial: {fileID: 34721826918571043, guid: 6353de5ebb809fc4faae9da730c21abc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

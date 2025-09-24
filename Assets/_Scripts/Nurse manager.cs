@@ -8,7 +8,7 @@ public class Nursemanager : MonoBehaviour
     public static Nursemanager instance;
 
     [SerializeField] private GameObject nursePrefab;
-    [SerializeField] private Nursepathnode startNode;
+    [SerializeField] private Nursepathnode deliverNode, retrieveNode;
     void Start()
     {
         instance = this;
@@ -19,10 +19,17 @@ public class Nursemanager : MonoBehaviour
     {
 
     }
-    public void SendNurse(Crib targetCrib)
+    public void SendNurse(Crib targetCrib, bool deliverBaby)
     {
         Nursemovement newNurse = Instantiate(nursePrefab).GetComponent<Nursemovement>();
-        newNurse.AddPath(MakePath(targetCrib, startNode), targetCrib);
+        if (deliverBaby)
+        {
+            newNurse.AddPath(MakePath(targetCrib, deliverNode), targetCrib);
+        }
+        else
+        {
+            newNurse.AddPath(MakePath(targetCrib, retrieveNode), targetCrib);
+        }
     }
 
     public List<Nursepathnode> MakePath(Nursepathnode target, Nursepathnode start)

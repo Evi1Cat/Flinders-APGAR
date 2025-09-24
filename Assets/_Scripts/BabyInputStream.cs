@@ -48,7 +48,7 @@ public class BabyInputStream : MonoBehaviour
                     {
                         roomFound = true; //If there is room in one of the cribs
                         cribList[i].nurseOnTheWay = true;
-                        Nursemanager.instance.SendNurse(cribList[i]);
+                        Nursemanager.instance.SendNurse(cribList[i], true);
                         //Debug.Log("baby!");
                     }
                     else

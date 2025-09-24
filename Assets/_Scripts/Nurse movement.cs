@@ -35,7 +35,14 @@ public class Nursemovement : MonoBehaviour
     }
     private void PlaceBaby()
     {
-        targetCrib.NewBaby();
+        if (targetCrib.Occupied())
+        {
+            targetCrib.ReleaseBaby();
+        }
+        else
+        {
+            targetCrib.NewBaby();
+        }
         targetCrib.nurseOnTheWay = false;
         //Debug.Log(current);
         path = Nursemanager.instance.MakePath(home, current);

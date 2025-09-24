@@ -10,7 +10,7 @@ public class Crib : Nursepathnode
     public TimerTick timerTick;
     [SerializeField] Sprite empty, full;
     [SerializeField] Opencrib openCrib;
-    private int checkIndex = 0;
+    private int checkIndex = 0, healthy = -1;
     public float babyTimer = 0f;
     private SpriteRenderer cribSprite;
     private Baby baby = null;
@@ -39,7 +39,8 @@ public class Crib : Nursepathnode
                 {
                     if (BabyNeedsUrgentCare())
                     {
-                        ReleaseBaby(1);
+                        healthy = 1;
+                        Nursemanager.instance.SendNurse(this, false);
                         Debug.Log("Baby was remove due to needing urgent care");
                     }
                     APGAR_Check_Times[checkIndex].checkedBySystem = true;
@@ -58,13 +59,14 @@ public class Crib : Nursepathnode
             else if (APGAR_Check_Times[^1].checkTime + (30 * GameManager.instance.timeSpeedModifier) < babyTimer)
             {
                 //add code for baby to be taken away
-                if(BabyNeedsUrgentCare())
+                if (BabyNeedsUrgentCare())
                 {
-                    ReleaseBaby(1);
+                    healthy = 1;
+                    Nursemanager.instance.SendNurse(this, false);
                 }
                 else
                 {
-                    ReleaseBaby(-1);
+                    Nursemanager.instance.SendNurse(this, false);
                 }
             }
         }
@@ -89,6 +91,7 @@ public class Crib : Nursepathnode
         float x = 0;
         babyTimer = 0;
         checkIndex = 0;
+        healthy = -1;
         switch (OTT())
         {
             case 2:
@@ -114,10 +117,10 @@ public class Crib : Nursepathnode
         return x;
     }
 
-    public void ReleaseBaby(int x)
+    public void ReleaseBaby()
     {
         //Logic for a baby getting taken away
-        if (x == 1)//If baby was deemed healthy
+        if (healthy == 1)//If baby was deemed healthy
         {
             if (APGAR_Check_Times[1].checkTime < babyTimer && !BabyNeedsUrgentCare()) // if the baby has an APGAR of 7+ after the first two checks
             {
@@ -128,7 +131,7 @@ public class Crib : Nursepathnode
                 GameManager.instance.Decrease();
             }
         }
-        if (x == -1)//If baby was deemed unhealthy 
+        if (healthy == -1)//If baby was deemed unhealthy 
         {
             if (BabyNeedsUrgentCare()) // if the baby has an apgar of 6 or less after all the tests, or if the baby has an apgar of 3 or below
             {
@@ -142,6 +145,11 @@ public class Crib : Nursepathnode
         openCrib.Close();
         baby = null;
         cribSprite.sprite = empty;
+    }
+
+    public void SetHealthy()
+    {
+        healthy = 1;
     }
 
     /// <summary>

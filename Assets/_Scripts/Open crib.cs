@@ -23,7 +23,7 @@ public class Opencrib : MonoBehaviour
 
     public void Open(Baby x, Crib refer)
     {
-        if (x != null)
+        if (x != null && !refer.nurseOnTheWay)
         {
             gameObject.SetActive(true);
             openedCrib = refer;
@@ -49,7 +49,11 @@ public class Opencrib : MonoBehaviour
     /// <param name="x"> 1 for a healthy baby and -1 for an urgent care baby</param>
     public void RemoveBaby(int x)
     {
-        openedCrib.ReleaseBaby(x);
+        if (x == 1)
+        {
+            openedCrib.SetHealthy();
+        }
+        Nursemanager.instance.SendNurse(openedCrib, false);
         Close();
     }
 
