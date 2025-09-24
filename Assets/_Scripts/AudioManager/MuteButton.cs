@@ -6,7 +6,10 @@ public class MuteButton : MonoBehaviour
     [SerializeField] Image line;
     private void Start()
     {
-        line.gameObject.SetActive(AudioManager.Instance.IsMuted());
+        if (AudioManager.Instance)
+        {
+            line.gameObject.SetActive(AudioManager.Instance.IsMuted());
+        }
     }
     void Update()
     {

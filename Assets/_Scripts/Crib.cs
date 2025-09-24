@@ -41,7 +41,7 @@ public class Crib : Nursepathnode
                     {
                         healthy = 1;
                         Nursemanager.instance.SendNurse(this, false);
-                        Debug.Log("Baby was remove due to needing urgent care");
+                        //Debug.Log("Baby was remove due to needing urgent care");
                     }
                     APGAR_Check_Times[checkIndex].checkedBySystem = true;
                     checkIndex++;

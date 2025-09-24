@@ -8,6 +8,9 @@ public class ButtonClick : MonoBehaviour
     }
     public void ButtonClickSound()
     {
-        AudioManager.Instance.PlaySoundEffect("Click " + Random.Range(1, 8));
+        if (AudioManager.Instance)
+        {
+            AudioManager.Instance.PlaySoundEffect("Click " + Random.Range(1, 8));
+        }
     }
 }
