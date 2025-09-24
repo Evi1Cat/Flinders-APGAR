@@ -100,7 +100,7 @@ public class AudioManager : MonoBehaviour
                 }
                 sfxPool[i].gameObject.SetActive(true);
                 sfxPool[i].Play();
-                Debug.Log("Playing " + newSFX.name + " on " + sfxPool[i].gameObject.name);
+                //Debug.Log("Playing " + newSFX.name + " on " + sfxPool[i].gameObject.name);
                 return;
             }
         }

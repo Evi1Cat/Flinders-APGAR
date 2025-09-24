@@ -130,7 +130,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2199412527091314149}
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -8388598466733130882, guid: e7e26743e8c77e14daefe29a8de6e035, type: 3}
+  m_Sprite: {fileID: -6244305828355252529, guid: 0a4b41d3c41c42340b42dbfa60c28502, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nurseOnTheWay: 0
-  empty: {fileID: -8388598466733130882, guid: e7e26743e8c77e14daefe29a8de6e035, type: 3}
+  empty: {fileID: -6244305828355252529, guid: 0a4b41d3c41c42340b42dbfa60c28502, type: 3}
   full: {fileID: -8840889746415585949, guid: b83a01252fc366b4b99687cc54840c1d, type: 3}
   openCrib: {fileID: 0}
   babyTimer: 0

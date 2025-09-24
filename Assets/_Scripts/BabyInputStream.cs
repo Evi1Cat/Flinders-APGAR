@@ -35,7 +35,7 @@ public class BabyInputStream : MonoBehaviour
                     }
                 }
                 timer = Mathf.Pow((currentBabies - GameManager.instance.babySettings.preferredBabiesOnScreen) / 1.2f, 3f) + (babyTimer * Random.Range(1f - spawnVariation, 1f + spawnVariation));
-                Debug.Log(timer);
+                //Debug.Log(timer);
 
                 
                 int index = Random.Range(0, cribList.Length);
