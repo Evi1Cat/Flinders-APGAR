@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Crib : MonoBehaviour
+public class Crib : Nursepathnode
 {
     public bool nurseOnTheWay = false;
     public delegate void TimerTick(int time);

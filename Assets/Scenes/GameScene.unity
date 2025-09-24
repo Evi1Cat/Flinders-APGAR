@@ -3759,7 +3759,6 @@ MonoBehaviour:
   accessibleCribs: []
   neighbours:
   - {fileID: 898495397}
-  - {fileID: 58837061}
   lastNode: {fileID: 0}
 --- !u!4 &1229841174
 Transform:

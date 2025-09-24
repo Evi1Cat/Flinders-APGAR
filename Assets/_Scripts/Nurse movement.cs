@@ -7,39 +7,39 @@ public class Nursemovement : MonoBehaviour
     //[Range(0, 100)] public int curvePercent = 0;
     public TweenVars[] nurseTweens = new TweenVars[3];
     private Crib targetCrib = null;
-    private List<Nursepathnode> path, pathBack = new List<Nursepathnode>();
+    private Nursepathnode home, current;
+    private List<Nursepathnode> path;
     public void AddPath(List<Nursepathnode> x, Crib y)
     {
         path = x;
         targetCrib = y;
         transform.position = path[0].transform.position;
-        pathBack.Insert(0, path[0]);
+        home = path[0];
         path.RemoveAt(0);
         Tween.Position(transform, path[0].transform.position, nurseTweens[0].duration, nurseTweens[0].delay, nurseTweens[0].easeCurve, completeCallback: MoveToNextPoint);
-        pathBack.Insert(0, path[0]);
         path.RemoveAt(0);
     }
 
     private void MoveToNextPoint()
     {
-        //Vector3 target = path[0].transform.position;
-
         if (path.Count > 1)
         {
             Tween.Position(transform, path[0].transform.position, nurseTweens[1].duration, nurseTweens[1].delay, nurseTweens[1].easeCurve, completeCallback: MoveToNextPoint);
-            pathBack.Insert(0, path[0]);
         }
         else
         {
             Tween.Position(transform, path[0].transform.position, nurseTweens[2].duration, nurseTweens[2].delay, nurseTweens[2].easeCurve, completeCallback: PlaceBaby);
         }
+        current = path[0];
         path.RemoveAt(0);
     }
     private void PlaceBaby()
     {
         targetCrib.NewBaby();
         targetCrib.nurseOnTheWay = false;
-        path = pathBack;
+        //Debug.Log(current);
+        path = Nursemanager.instance.MakePath(home, current);
+        //Debug.Log(path);
         Tween.Position(transform, path[0].transform.position, nurseTweens[0].duration, 0.5f, nurseTweens[0].easeCurve, completeCallback: Leave);
         path.RemoveAt(0);
     }

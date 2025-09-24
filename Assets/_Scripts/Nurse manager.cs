@@ -19,27 +19,34 @@ public class Nursemanager : MonoBehaviour
     {
 
     }
+    public void SendNurse(Crib targetCrib)
+    {
+        Nursemovement newNurse = Instantiate(nursePrefab).GetComponent<Nursemovement>();
+        newNurse.AddPath(MakePath(targetCrib, startNode), targetCrib);
+    }
 
-    public void MakePath(Crib targetCrib)
+    public List<Nursepathnode> MakePath(Nursepathnode target, Nursepathnode start)
     {
         List<Nursepathnode> queue = new List<Nursepathnode>();
         List<Nursepathnode> searched = new List<Nursepathnode>();
         List<Nursepathnode> path = new List<Nursepathnode>();
         Nursepathnode currentNode;
         bool pathfound = false;
-        queue.Add(startNode);
-        while (queue.Count > 0 && !pathfound)
+        queue.Add(start);
+        while (queue.Count > 0)
         {
             currentNode = queue[0];
+            queue.RemoveAt(0);
+            searched.Add(currentNode);
             //Debug.Log(currentNode);
             //Debug.Log(searched.Count +" searched - " + currentNode.accessibleCribs.Count() + " cribs surrounding");
-            if (currentNode.accessibleCribs.Count() > 0 && AtDestination(currentNode, targetCrib))
+            if (AtDestination(currentNode, target))
             {
                 while (!pathfound)
                 {
                     //Debug.Log("Looking for path " + currentNode);
                     path.Insert(0, currentNode);
-                    if (currentNode.lastNode == null)
+                    if (currentNode == start)
                     {
                         pathfound = true;
                     }
@@ -59,21 +66,25 @@ public class Nursemanager : MonoBehaviour
                         queue.Add(x);
                     }
                 }
-                queue.RemoveAt(0);
-                searched.Add(currentNode);
             }
         }
-        //DebugPath(path);
-
+        if (!pathfound)
+        {
+            string x = "Failed to find path from " + start + " to " + target + ": ";
+            foreach (Nursepathnode y in path)
+            {
+                x += y.gameObject.name + ", ";
+            }
+            Debug.Log(x);
+        }
+            return path;
         //Makes the nurse and sends them on their way
-        Nursemovement newNurse = Instantiate(nursePrefab).GetComponent<Nursemovement>();
-        newNurse.AddPath(path, targetCrib);
     }
 
-    private bool AtDestination(Nursepathnode x, Crib y)
+    private bool AtDestination(Nursepathnode x, Nursepathnode y)
     {
         bool z = false;
-        if (x.accessibleCribs.Contains(y))
+        if ((x.accessibleCribs.Count() > 0 && x.accessibleCribs.Contains(y)) || x == y)
         {
             z = true;
         }
