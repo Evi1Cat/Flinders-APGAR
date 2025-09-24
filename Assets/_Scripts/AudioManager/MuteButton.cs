@@ -8,9 +8,16 @@ public class MuteButton : MonoBehaviour
     {
         line.gameObject.SetActive(AudioManager.Instance.IsMuted());
     }
+    void Update()
+    {
+        if (line.gameObject.activeSelf && !AudioManager.Instance.IsMuted())
+        {
+            line.gameObject.SetActive(false);
+        }
+    }
     public void ToggleMute()
     {
-        if(line.gameObject.activeSelf)
+        if (line.gameObject.activeSelf)
         {
             Toggle(false);
         }
