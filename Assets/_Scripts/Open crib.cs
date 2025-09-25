@@ -1,18 +1,20 @@
 using System;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Opencrib : MonoBehaviour
 {
-
+    public static Opencrib Instance;
     [SerializeField] private TMP_Text pulse, irritability, muscleTone, respiratory, timerText;
     [SerializeField] private Babycontroller baby;
 
     private Crib openedCrib = null;
     private Baby currentBaby = null;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
+        Instance = this;
         gameObject.SetActive(false);
     }
 
@@ -35,10 +37,11 @@ public class Opencrib : MonoBehaviour
 
     public void Close()
     {
-        if(openedCrib != null)
+        if (openedCrib != null)
         {
             //Debug.Log("test");
             openedCrib.timerTick -= UpdateText;
+            baby.StopBreathing();
         }
         openedCrib = null;
         currentBaby = null;
@@ -62,6 +65,14 @@ public class Opencrib : MonoBehaviour
     {
         return openedCrib;
     }
+    public void SetBabyHue(Color x)
+    {
+        currentBaby.setHue = x;
+    }
+    public Color GetBabyHue()
+    {
+        return currentBaby.setHue;
+    }
 
     private void UpdateText(int timeInSeconds)
     {
@@ -76,6 +87,7 @@ public class Opencrib : MonoBehaviour
 
         if (openedCrib != null)
         {
+            baby.StartBreathing();
             baby.SetSkinColour(currentBaby.CheckSkinColour());
             baby.SetSkinBlue(currentBaby.Check_Apgar(), "white");
             pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());

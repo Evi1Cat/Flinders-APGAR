@@ -6,7 +6,9 @@ using UnityEngine;
 public class Baby
 {
     //Baby health concerns
+    public Color setHue = Color.black;
     private String skinColour = "white";
+
     [Range(0, 2)] private int skinBlue = 1;
     [Range(0, 2)] private int agitation = 1;
     [Range(60, 200)] private float heartRate = 130;
