@@ -104,7 +104,7 @@ public class Crib : Nursepathnode
                 x = Random.Range(1f, 99f);
                 break;
         }
-        baby = new Baby(OTT(), x, OTT(), OTT(), OTT());
+        baby = new Baby("white", OTT(), x, OTT(), OTT(), OTT());
 
         //Debug.Log(baby);
         cribSprite.sprite = full;

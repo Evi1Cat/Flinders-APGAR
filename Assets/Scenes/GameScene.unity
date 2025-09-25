@@ -6160,6 +6160,15 @@ MonoBehaviour:
   - {fileID: 601777276}
   - {fileID: 393656809}
   - {fileID: 1700581588}
+  skinVariations:
+  - colour: white
+    bodyParts:
+    - {fileID: -6213060313056825792, guid: c168ea196b041724bad69d9be4d382a0, type: 3}
+    - {fileID: 6349026541777925701, guid: 34dd4df9b3a6b1748aba363e29a829d8, type: 3}
+    - {fileID: 543536820395522974, guid: e3f7567fc5f8e0241a808ca2fd27a45e, type: 3}
+    - {fileID: -5885855863686521579, guid: 2a466025bfb5a0a45bfd8fe1cc99d002, type: 3}
+    - {fileID: -1784248369061609653, guid: 7bcc31e24a0ab8340ba91cfcc29a691f, type: 3}
+    - {fileID: -3475721686182611955, guid: 7169f7a1cfa4df84db5e5dd72f3a6b49, type: 3}
 --- !u!1 &1911683610
 GameObject:
   m_ObjectHideFlags: 0
@@ -6608,7 +6617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c1c4f749f94284d9ac46ad037b9134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueSkin: {fileID: 0}
   pulse: {fileID: 1735054307}
   irritability: {fileID: 1486877028}
   muscleTone: {fileID: 1247751736}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Opencrib : MonoBehaviour
 {
 
-    [SerializeField] private TMP_Text blueSkin, pulse, irritability, muscleTone, respiratory, timerText;
+    [SerializeField] private TMP_Text pulse, irritability, muscleTone, respiratory, timerText;
     [SerializeField] private Babycontroller baby;
 
     private Crib openedCrib = null;
@@ -76,6 +76,7 @@ public class Opencrib : MonoBehaviour
 
         if (openedCrib != null)
         {
+            baby.SetSkinColour(currentBaby.CheckSkinColour());
             baby.SetSkinBlue(currentBaby.Check_Apgar(), "white");
             pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
             irritability.text = "" + currentBaby.Check_apGar();

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,9 +8,31 @@ public class Babycontroller : MonoBehaviour
     [SerializeField][Range(0f, 25f)] float variation = 10f;
     [SerializeField] SkinGradient[] gradientList;
     [SerializeField] SpriteRenderer[] babyBody;
+    [SerializeField] SkinVariants[] skinVariations;
     void Start()
     {
         //SetSkinBlue(1, "white");
+    }
+    public void SetSkinColour(string colourName)
+    {
+        foreach(SkinVariants x in skinVariations)
+        {
+            if(x.colour == colourName)
+            {
+                SetColour(x);
+            }
+        }
+    }
+
+    private void SetColour(SkinVariants colour)
+    {
+        if(colour.bodyParts.Count() == babyBody.Count())
+        {
+            for(int i = 0; i < babyBody.Count(); i++)
+            {
+                babyBody[i].sprite = colour.bodyParts[i];
+            }
+        }
     }
 
     public void SetSkinBlue(int blueLevel, string skinColour)
@@ -70,4 +93,11 @@ public class SkinGradient
 {
     [SerializeField] public string name;
     [SerializeField] public Color bestSkin, worstSkin;
+}
+
+[Serializable]
+public class SkinVariants
+{
+    [SerializeField] public string colour;
+    [SerializeField] public Sprite[] bodyParts;
 }

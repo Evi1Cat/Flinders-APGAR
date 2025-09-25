@@ -6,7 +6,7 @@ using UnityEngine;
 public class Baby
 {
     //Baby health concerns
-    private String skinColour = "";
+    private String skinColour = "white";
     [Range(0, 2)] private int skinBlue = 1;
     [Range(0, 2)] private int agitation = 1;
     [Range(60, 200)] private float heartRate = 130;
@@ -14,8 +14,9 @@ public class Baby
     [Range(0, 2)] private int respiration = 1;
     //Baby health distractors
 
-    public Baby(int A, float P, int G, int M, int R)
+    public Baby(string skinColour, int A, float P, int G, int M, int R)
     {
+        this.skinColour = skinColour;
         skinBlue = A;
         heartRate = P;
         agitation = G;
@@ -60,7 +61,10 @@ public class Baby
     {
         return respiration;
     }
-
+    public string CheckSkinColour()
+    {
+        return skinColour;
+    }
     public void UpdateStats(int A, float P, int G, int M, int R)
     {
         skinBlue = A;
