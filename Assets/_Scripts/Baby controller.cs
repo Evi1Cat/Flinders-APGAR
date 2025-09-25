@@ -5,32 +5,44 @@ using UnityEngine.AI;
 public class Babycontroller : MonoBehaviour
 {
     [SerializeField][Range(0f, 25f)] float variation = 10f;
-    [SerializeField] Color bestSkin, worstSkin;
-    [SerializeField] SpriteRenderer babyBody;
+    [SerializeField] SkinGradient[] gradientList;
+    [SerializeField] SpriteRenderer[] babyBody;
     void Start()
     {
-        SetSkinBlue(1);
+        //SetSkinBlue(1, "white");
     }
 
-    public void SetSkinBlue(int blueLevel)
+    public void SetSkinBlue(int blueLevel, string skinColour)
     {
-        Vector3 diff = ColourToVector3(bestSkin) - ColourToVector3(worstSkin);
-        Debug.Log("Best: " + ColourToVector3(bestSkin) + " | Worst: " + ColourToVector3(worstSkin) + " | Diff: " + diff);
-        Vector3 output = ColourToVector3(bestSkin);
+        SkinGradient matchingGradient = gradientList[0];
+        foreach(SkinGradient x in gradientList)
+        {
+            if(x.name == skinColour)
+            {
+                matchingGradient = x;
+            }
+        }
+
+        Vector3 diff = ColourToVector3(matchingGradient.bestSkin) - ColourToVector3(matchingGradient.worstSkin);
+        //Debug.Log("Best: " + ColourToVector3(bestSkin) + " | Worst: " + ColourToVector3(worstSkin) + " | Diff: " + diff);
+        Vector3 output = ColourToVector3(matchingGradient.bestSkin);
         switch (blueLevel)
         {
             case 0: 
-                output = (diff / (100 / variation)) + ColourToVector3(worstSkin);
+                output = (diff / (100 / variation)) + ColourToVector3(matchingGradient.worstSkin);
                 break;
             case 1:
-                output = (diff / 2) + ColourToVector3(worstSkin);
+                output = (diff / 2) + ColourToVector3(matchingGradient.worstSkin);
                 break;
             case 2:
-                output = ColourToVector3(bestSkin) - (diff / (100 / variation));
+                output = ColourToVector3(matchingGradient.bestSkin) - (diff / (100 / variation));
                 break;
         }
 
-        babyBody.color = Vector3ToColour(output);
+        foreach(SpriteRenderer x in babyBody)
+        {
+            x.color = Vector3ToColour(output);
+        }
     }
     private Vector3 ColourToVector3(Color x)
     {
@@ -48,7 +60,14 @@ public class Babycontroller : MonoBehaviour
         output.r = x.x;
         output.g = x.y;
         output.b = x.z;
-        Debug.Log(output + ": " + output.r + " - " + output.g + " - " + output.b + " | (" + x + ")");
+        //Debug.Log(output + ": " + output.r + " - " + output.g + " - " + output.b + " | (" + x + ")");
         return output;
     }
+}
+
+[Serializable]
+public class SkinGradient
+{
+    [SerializeField] public string name;
+    [SerializeField] public Color bestSkin, worstSkin;
 }

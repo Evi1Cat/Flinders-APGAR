@@ -6,6 +6,7 @@ public class Opencrib : MonoBehaviour
 {
 
     [SerializeField] private TMP_Text blueSkin, pulse, irritability, muscleTone, respiratory, timerText;
+    [SerializeField] private Babycontroller baby;
 
     private Crib openedCrib = null;
     private Baby currentBaby = null;
@@ -75,7 +76,7 @@ public class Opencrib : MonoBehaviour
 
         if (openedCrib != null)
         {
-            blueSkin.text = "" + currentBaby.Check_Apgar();
+            baby.SetSkinBlue(currentBaby.Check_Apgar(), "white");
             pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
             irritability.text = "" + currentBaby.Check_apGar();
             muscleTone.text = "" + currentBaby.Check_apgAr();
