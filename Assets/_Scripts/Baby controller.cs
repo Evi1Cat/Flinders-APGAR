@@ -1,18 +1,55 @@
+using Pixelplacement;
+using Pixelplacement.TweenSystem;
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Babycontroller : MonoBehaviour
 {
+    [SerializeField] float breatheHeldFor = 0.5f, chestExpansion = 10f;
+    [SerializeField] SpriteRenderer babyChest;
+    [SerializeField] TweenVars breathTween;
     [SerializeField][Range(0f, 25f)] float variation = 10f;
     [SerializeField] SkinGradient[] gradientList;
     [SerializeField] SpriteRenderer[] babyBody;
     [SerializeField] SkinVariants[] skinVariations;
+    private TweenBase currentTween;
     void Start()
     {
         //SetSkinBlue(1, "white");
     }
+    private void Update()
+    {
+
+    }
+    private IEnumerator BreatheIn()
+    {
+        yield return new WaitForSeconds(breatheHeldFor);
+        currentTween = Tween.Value(babyChest.size.x, babyChest.size.x + (babyChest.size.x * (100 / chestExpansion)), SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback:()=> CallbackIntermediate(false));
+    }
+    private IEnumerator BreatheOut()
+    {
+        yield return new WaitForSeconds(breatheHeldFor);
+        currentTween = Tween.Value(babyChest.size.x, babyChest.size.x - (chestExpansion * (babyChest.size.x / chestExpansion+1)), SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback: () => CallbackIntermediate(true));
+    }
+    private void CallbackIntermediate(bool x)
+    {
+        if(x)
+        {
+            BreatheIn();
+        }
+        else
+        {
+            BreatheOut();
+        }
+    }
+    private void SetWidth(float w)
+    {
+        babyChest.size = new Vector2(w, babyChest.size.y);
+    }
+
     public void SetSkinColour(string colourName)
     {
         foreach(SkinVariants x in skinVariations)
