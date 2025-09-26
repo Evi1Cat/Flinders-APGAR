@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Opencrib : MonoBehaviour
@@ -41,8 +40,8 @@ public class Opencrib : MonoBehaviour
         {
             //Debug.Log("test");
             openedCrib.timerTick -= UpdateText;
-            baby.StopBreathing();
         }
+        baby.StopBreathing();
         openedCrib = null;
         currentBaby = null;
         gameObject.SetActive(false);
@@ -87,13 +86,12 @@ public class Opencrib : MonoBehaviour
 
         if (openedCrib != null)
         {
-            baby.StartBreathing();
             baby.SetSkinColour(currentBaby.CheckSkinColour());
             baby.SetSkinBlue(currentBaby.Check_Apgar(), "white");
             pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
             irritability.text = "" + currentBaby.Check_apGar();
             muscleTone.text = "" + currentBaby.Check_apgAr();
-            respiratory.text = "" + currentBaby.Check_apgaR();
+            baby.StartBreathing(currentBaby.Check_apgaR());
         }
 
     }

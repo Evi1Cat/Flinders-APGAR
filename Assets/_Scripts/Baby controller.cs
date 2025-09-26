@@ -9,15 +9,17 @@ using Random = UnityEngine.Random;
 
 public class Babycontroller : MonoBehaviour
 {
-    [SerializeField] float breatheHeldFor = 0.5f, chestExpansion = 10f;
+    [SerializeField] float breatheHeldFor = 0.5f;
+    [SerializeField][Range(1f,1.5f)] float chestExpansion = 10f;
     [SerializeField] SpriteRenderer babyChest;
     [SerializeField] TweenVars breathTween;
     [SerializeField][Range(0f, 25f)] float variation = 10f;
     [SerializeField] SkinGradient[] gradientList;
     [SerializeField] SpriteRenderer[] babyBody;
     [SerializeField] SkinVariants[] skinVariations;
+    private int breathingRate = 0;
     private bool currentlyBreathing = false;
-    private Vector2 initSize;
+    private Vector2 initSize = new(0, 0);
     private TweenBase currentTween;
     void Start()
     {
@@ -29,26 +31,42 @@ public class Babycontroller : MonoBehaviour
     }
     private IEnumerator BreatheIn()
     {
-        yield return new WaitForSeconds(breatheHeldFor);
-        currentTween = Tween.Value(babyChest.size.x, babyChest.size.x + (babyChest.size.x * (100 / chestExpansion)), SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback:()=> CallbackIntermediate(false));
+        float breatheWait = breatheHeldFor, chestSize = chestExpansion;
+        switch(breathingRate)
+        {
+            case 0:
+                chestSize = 1;
+                breatheWait = 0f;
+                break;
+            case 1:
+                breatheWait = Random.Range(breatheHeldFor - (breatheHeldFor * 0.9f), breatheHeldFor + (breatheHeldFor*2f));
+                break;
+        }
+        yield return new WaitForSeconds(breatheWait);
+        currentTween = Tween.Value(1, chestSize, SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback:()=> CallbackIntermediate(false));
     }
     private IEnumerator BreatheOut()
     {
-        yield return new WaitForSeconds(breatheHeldFor);
-        currentTween = Tween.Value(babyChest.size.x, babyChest.size.x - (chestExpansion * (babyChest.size.x / chestExpansion+1)), SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback: () => CallbackIntermediate(true));
+        float breatheWait = breatheHeldFor, chestSize = chestExpansion;
+        if(breathingRate == 0)
+        {
+            chestSize = 1;
+        }
+        yield return new WaitForSeconds(breatheWait);
+        currentTween = Tween.Value(chestSize, 1, SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback: () => CallbackIntermediate(true));
     }
-    public void StartBreathing()
+    public void StartBreathing(int breathingIntensity)
     {
         if (!currentlyBreathing)
         {
-            initSize = babyChest.size;
             currentlyBreathing = true;
             CallbackIntermediate(true);
         }
+        breathingRate = breathingIntensity;
     }
     public void StopBreathing()
     {
-        babyChest.size = initSize;
+        babyChest.transform.localScale = initSize;
         currentTween.Cancel();
         currentlyBreathing = false;
     }
@@ -65,8 +83,8 @@ public class Babycontroller : MonoBehaviour
     }
     private void SetWidth(float w)
     {
-        babyChest.size = new Vector2(w, babyChest.size.y);
-        Debug.Log(babyChest.size);
+        babyChest.transform.localScale = new Vector2(w, 1);
+        //Debug.Log(babyChest.size);
     }
 
     public void SetSkinColour(string colourName)

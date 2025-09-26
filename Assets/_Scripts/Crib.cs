@@ -240,7 +240,7 @@ public class Crib : Nursepathnode
 
     private bool BabyNeedsUrgentCare()
     {
-        if((baby.CheckAPGAR() <= 6 && APGAR_Check_Times[^1].checkTime < babyTimer) || baby.CheckAPGAR() <= 3 || baby.Check_aPgar() <= 50 || baby.Check_apgaR() == 0)
+        if((baby.CheckAPGAR() <= 6 && APGAR_Check_Times[^1].checkTime < babyTimer) || baby.CheckAPGAR() <= 3 || baby.Check_aPgar() == 0 || baby.Check_apgaR() == 0)
         {
             return true;
         }
