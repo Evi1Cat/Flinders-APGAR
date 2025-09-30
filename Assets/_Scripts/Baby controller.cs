@@ -3,6 +3,7 @@ using Pixelplacement.TweenSystem;
 using System;
 using System.Collections;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -10,10 +11,10 @@ using Random = UnityEngine.Random;
 public class Babycontroller : MonoBehaviour
 {
     [SerializeField] float breatheHeldFor = 0.5f;
-    [SerializeField][Range(1f,1.5f)] float chestExpansion = 10f;
+    [SerializeField][Range(1f, 1.5f)] float chestExpansion = 10f;
     [SerializeField] SpriteRenderer babyChest;
     [SerializeField] TweenVars breathTween;
-    [SerializeField][Range(0f, 25f)] float variation = 10f;
+    [SerializeField][Range(0f, 1f)] float midpoint = 0.1f, gap = 0.95f;
     [SerializeField] SkinGradient[] gradientList;
     [SerializeField] SpriteRenderer[] babyBody;
     [SerializeField] SkinVariants[] skinVariations;
@@ -32,23 +33,23 @@ public class Babycontroller : MonoBehaviour
     private IEnumerator BreatheIn()
     {
         float breatheWait = breatheHeldFor, chestSize = chestExpansion;
-        switch(breathingRate)
+        switch (breathingRate)
         {
             case 0:
                 chestSize = 1;
                 breatheWait = 0f;
                 break;
             case 1:
-                breatheWait = Random.Range(breatheHeldFor - (breatheHeldFor * 0.9f), breatheHeldFor + (breatheHeldFor*2f));
+                breatheWait = Random.Range(breatheHeldFor - (breatheHeldFor * 0.9f), breatheHeldFor + (breatheHeldFor * 2f));
                 break;
         }
         yield return new WaitForSeconds(breatheWait);
-        currentTween = Tween.Value(1, chestSize, SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback:()=> CallbackIntermediate(false));
+        currentTween = Tween.Value(1, chestSize, SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback: () => CallbackIntermediate(false));
     }
     private IEnumerator BreatheOut()
     {
         float breatheWait = breatheHeldFor, chestSize = chestExpansion;
-        if(breathingRate == 0)
+        if (breathingRate == 0)
         {
             chestSize = 1;
         }
@@ -89,9 +90,9 @@ public class Babycontroller : MonoBehaviour
 
     public void SetSkinColour(string colourName)
     {
-        foreach(SkinVariants x in skinVariations)
+        foreach (SkinVariants x in skinVariations)
         {
-            if(x.colour == colourName)
+            if (x.colour == colourName)
             {
                 SetColour(x);
             }
@@ -100,9 +101,9 @@ public class Babycontroller : MonoBehaviour
 
     private void SetColour(SkinVariants colour)
     {
-        if(colour.bodyParts.Count() == babyBody.Count())
+        if (colour.bodyParts.Count() == babyBody.Count())
         {
-            for(int i = 0; i < babyBody.Count(); i++)
+            for (int i = 0; i < babyBody.Count(); i++)
             {
                 babyBody[i].sprite = colour.bodyParts[i];
             }
@@ -112,7 +113,7 @@ public class Babycontroller : MonoBehaviour
     public void SetSkinBlue(int blueLevel, string skinColour)
     {
         SkinGradient matchingGradient = gradientList[0];
-        Vector3 output = ColourToVector3(matchingGradient.bestSkin);
+        Color output = matchingGradient.bestSkin;
 
         if (Opencrib.Instance.GetBabyHue() == Color.black)
         {
@@ -124,35 +125,53 @@ public class Babycontroller : MonoBehaviour
                 }
             }
 
-            Vector3 diff = ColourToVector3(matchingGradient.bestSkin) - ColourToVector3(matchingGradient.worstSkin);
+            Vector3 scaleMidpoint = (ColourToVector3(matchingGradient.bestSkin) - ColourToVector3(matchingGradient.worstSkin)) * midpoint;
             //Debug.Log("Best: " + ColourToVector3(bestSkin) + " | Worst: " + ColourToVector3(worstSkin) + " | Diff: " + diff);
             switch (blueLevel)
             {
                 case 0:
-                    output = (diff / (100 / variation)) + ColourToVector3(matchingGradient.worstSkin) + ((diff / (100 / variation)) * (Random.Range(-variation, variation)/100));
+                    output = ColourRandomRange(Vector3ToColour(ColourToVector3(matchingGradient.bestSkin) - (scaleMidpoint*gap)), matchingGradient.bestSkin);
                     break;
-                case 1:
-                    output = (diff / 2) + ColourToVector3(matchingGradient.worstSkin) + ((diff / (100 / variation)) * (Random.Range(-variation, variation)/100));
-                    break;
-                case 2:
-                    output = ColourToVector3(matchingGradient.bestSkin) - (diff / (100 / variation)) + ((diff / (100 / variation)) *(Random.Range(-variation, variation)/100));
+                case > 0:
+                    output = ColourRandomRange(matchingGradient.worstSkin, Vector3ToColour(ColourToVector3(matchingGradient.bestSkin) - (scaleMidpoint*(2-gap))));
                     break;
             }
-            Opencrib.Instance.SetBabyHue(Vector3ToColour(output));
+            Opencrib.Instance.SetBabyHue(output);
         }
         else
         {
-            output = ColourToVector3(Opencrib.Instance.GetBabyHue());
+            output = Opencrib.Instance.GetBabyHue();
         }
 
         foreach (SpriteRenderer x in babyBody)
+        {
+            string objName = x.gameObject.name;
+            objName = objName[0] + objName[1] + objName[2] + "";
+            //Debug.Log(objName);
+            switch (blueLevel)
             {
-                x.color = Vector3ToColour(output);
+                case 0:
+                    x.color = output;
+                    break;
+                case 1:
+                    if (objName == "337")
+                    {
+                        x.color = output;
+                    }
+                    else
+                    {
+                        x.color = matchingGradient.bestSkin;
+                    }
+                    break;
+                case 2:
+                    x.color = output;
+                    break;
             }
+        }
     }
     private Vector3 ColourToVector3(Color x)
     {
-        Vector3 output = new Vector3
+        Vector3 output = new()
         {
             x = x.r,
             y = x.g,
@@ -168,6 +187,13 @@ public class Babycontroller : MonoBehaviour
         output.b = x.z;
         //Debug.Log(output + ": " + output.r + " - " + output.g + " - " + output.b + " | (" + x + ")");
         return output;
+    }
+
+    private Color ColourRandomRange(Color min, Color max)
+    {
+        Vector3 diff = ColourToVector3(max) - ColourToVector3(min);
+        Vector3  output = (diff * Random.Range(0f,1f)) + ColourToVector3(min);
+        return Vector3ToColour(output);
     }
 }
 

@@ -252,7 +252,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.55
+  m_fontSize: 49.35
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1031,7 +1031,7 @@ GameObject:
   - component: {fileID: 393656808}
   - component: {fileID: 393656809}
   m_Layer: 0
-  m_Name: Right hand
+  m_Name: ext Right hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1045,13 +1045,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393656807}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.1759681, w: 0.98439586}
-  m_LocalPosition: {x: 1.54, y: 0.45, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.20364177, w: 0.97904545}
+  m_LocalPosition: {x: 1.176, y: -0.752, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 601777275}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20.27}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.5}
 --- !u!212 &393656809
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1167,7 +1167,7 @@ GameObject:
   - component: {fileID: 547887751}
   - component: {fileID: 547887752}
   m_Layer: 0
-  m_Name: Left leg
+  m_Name: ext Left leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1182,7 +1182,7 @@ Transform:
   m_GameObject: {fileID: 547887750}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0099995, y: -3, z: 0}
+  m_LocalPosition: {x: -1.17, y: -2.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1254,7 +1254,7 @@ GameObject:
   - component: {fileID: 601777275}
   - component: {fileID: 601777276}
   m_Layer: 0
-  m_Name: Right arm
+  m_Name: ext Right arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ Transform:
   m_GameObject: {fileID: 601777274}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.097669765, w: 0.99521893}
-  m_LocalPosition: {x: 2.34, y: 1.1099999, z: 0}
+  m_LocalPosition: {x: 1.63, y: 1.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2696,7 +2696,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.05
+  m_fontSize: 30.85
   m_fontSizeBase: 39.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3819,7 +3819,7 @@ Transform:
   m_GameObject: {fileID: 1260689739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.87, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4288,7 +4288,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.2
+  m_fontSize: 30.85
   m_fontSizeBase: 39.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4399,7 +4399,7 @@ GameObject:
   - component: {fileID: 1412193482}
   - component: {fileID: 1412193483}
   m_Layer: 0
-  m_Name: Left hand
+  m_Name: ext Left hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4413,13 +4413,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412193481}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.175968, w: 0.9843959}
-  m_LocalPosition: {x: -1.54, y: 0.45, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.2596619, w: 0.9656996}
+  m_LocalPosition: {x: -1.091, y: -0.799, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2120694472}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20.27}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30.1}
 --- !u!212 &1412193483
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4729,7 +4729,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.2
+  m_fontSize: 67.05
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4792,7 +4792,7 @@ GameObject:
   - component: {fileID: 1459886367}
   - component: {fileID: 1459886368}
   m_Layer: 0
-  m_Name: Right leg
+  m_Name: ext Right leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4807,7 +4807,7 @@ Transform:
   m_GameObject: {fileID: 1459886366}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.01, y: -3, z: 0}
+  m_LocalPosition: {x: 1.17, y: -2.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5225,7 +5225,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.55
+  m_fontSize: 49.35
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5352,7 +5352,7 @@ Transform:
   m_GameObject: {fileID: 1700581586}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.43, z: 0}
+  m_LocalPosition: {x: 0, y: 1.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5577,7 +5577,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.55
+  m_fontSize: 49.35
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6168,11 +6168,12 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  variation: 10
+  midpoint: 0.1
+  gap: 0.95
   gradientList:
   - name: white
-    bestSkin: {r: 1, g: 1, b: 1, a: 0}
-    worstSkin: {r: 0.740566, g: 0.7970769, b: 1, a: 0}
+    bestSkin: {r: 1, g: 1, b: 1, a: 1}
+    worstSkin: {r: 0.7264151, g: 0.7872118, b: 1, a: 1}
   babyBody:
   - {fileID: 1656363238}
   - {fileID: 2120694473}
@@ -6816,7 +6817,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.7
+  m_fontSize: 59.05
   m_fontSizeBase: 97.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6879,7 +6880,7 @@ GameObject:
   - component: {fileID: 2120694472}
   - component: {fileID: 2120694473}
   m_Layer: 0
-  m_Name: Left arm
+  m_Name: ext Left arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6893,14 +6894,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120694471}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.097669765, w: 0.99521893}
-  m_LocalPosition: {x: -2.3399994, y: 1.1099999, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.16934954, w: 0.98555607}
+  m_LocalPosition: {x: -1.675, y: 1.351, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1412193482}
   m_Father: {fileID: 1869523472}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -11.21}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -19.5}
 --- !u!212 &2120694473
 SpriteRenderer:
   m_ObjectHideFlags: 0
