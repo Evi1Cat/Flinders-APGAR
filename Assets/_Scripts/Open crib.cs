@@ -90,7 +90,7 @@ public class Opencrib : MonoBehaviour
             baby.SetSkinBlue(currentBaby.Check_Apgar(), "white");
             pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
             irritability.text = "" + currentBaby.Check_apGar();
-            muscleTone.text = "" + currentBaby.Check_apgAr();
+            baby.UpdateLimbMovement(currentBaby.Check_apgAr());
             baby.StartBreathing(currentBaby.Check_apgaR());
         }
 

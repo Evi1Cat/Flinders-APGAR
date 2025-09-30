@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.45
+  m_fontSize: 45.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4143,7 +4143,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.45
+  m_fontSize: 45.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5411,7 +5411,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.45
+  m_fontSize: 45.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5547,7 +5547,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.45
+  m_fontSize: 45.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6787,8 +6787,15 @@ MonoBehaviour:
     life circumstances.
 
 
-    For a more complete understanding of all the information
-    presented in this game, please do your own research.'
+    The information for calculating a baby''s APGAR score
+    is taken more literally throughout the game  and symptoms and problens looked
+    at by checking the APGAR score may not represent the patterns seen in real life
+    cases. For a more complete understanding of all the information presented in
+    this game, please do your own research.
+
+
+    This game is exclusively aimed
+    at giving you a place to practice calculating the APGAR score.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aa92fb78423a4459fc87c778f3933f, type: 2}
   m_sharedMaterial: {fileID: 6708930791049633805, guid: 18aa92fb78423a4459fc87c778f3933f, type: 2}

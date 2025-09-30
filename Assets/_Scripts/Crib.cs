@@ -31,8 +31,8 @@ public class Crib : Nursepathnode
     {
         if (baby != null)
         {
-            babyTimer += Time.deltaTime * GameManager.instance.timeSpeedModifier;
             timerTick((int)babyTimer);
+            babyTimer += Time.deltaTime * GameManager.instance.timeSpeedModifier;
             if (checkIndex < APGAR_Check_Times.Count) // if there are more APGAR checks to do
             {
                 if (APGAR_Check_Times[checkIndex].checkTime + (GameManager.instance.babySettings.lastCHeckGraceTime * GameManager.instance.timeSpeedModifier) < babyTimer) //if the current check time has passed
@@ -80,6 +80,7 @@ public class Crib : Nursepathnode
     public void OpenCrib()
     {
         openCrib.Open(baby, this);
+        timerTick((int)babyTimer);
     }
     public void CloseCrib()
     {
@@ -104,7 +105,17 @@ public class Crib : Nursepathnode
                 x = Random.Range(1f, 99f);
                 break;
         }
-        baby = new Baby("white", OTT(), x, OTT(), OTT(), OTT());
+        int resp = 0;
+        if (x > 30)
+        {
+            resp = OTT();
+        }
+        int blue = 0;
+        if (resp < 2 || x < 30)
+        {
+            blue = OTT();
+        }
+        baby = new Baby("white", blue, x, OTT(), OTT(), resp);
 
         //Debug.Log(baby);
         cribSprite.sprite = full;
@@ -209,7 +220,7 @@ public class Crib : Nursepathnode
                 bool loop = true;
                 while (loop)
                 {
-                    if (Random.Range(0f, 100f) < GameManager.instance.babySettings.symptomChangeChance && x[i]+change <= 2 && x[i]+change >= 0)
+                    if (Random.Range(0f, 100f) < GameManager.instance.babySettings.symptomChangeChance && x[i] + change <= 2 && x[i] + change >= 0)
                     {
                         x[i] += change;
                     }

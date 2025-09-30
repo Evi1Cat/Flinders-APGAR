@@ -10,28 +10,42 @@ using Random = UnityEngine.Random;
 
 public class Babycontroller : MonoBehaviour
 {
+    [Header("Baby Breathing Variables")]
     [SerializeField] float breatheHeldFor = 0.5f;
     [SerializeField][Range(1f, 1.5f)] float chestExpansion = 10f;
     [SerializeField] SpriteRenderer babyChest;
     [SerializeField] TweenVars breathTween;
-    [SerializeField][Range(0f, 1f)] float midpoint = 0.1f, gap = 0.95f;
-    [SerializeField] SkinGradient[] gradientList;
-    [SerializeField] SpriteRenderer[] babyBody;
-    [SerializeField] SkinVariants[] skinVariations;
     private int breathingRate = 0;
     private bool currentlyBreathing = false;
-    private Vector2 initSize = new(0, 0);
+    private Vector2 initSize = new(1, 1);
     private TweenBase currentTween;
+    [Header("Baby Blue Skin Variables")]
+    [SerializeField][Range(0f, 1f)] float midpoint;
+    [SerializeField][Range(0f, 1f)] float gap;
+    [SerializeField] SkinGradient[] gradientList;
+    [SerializeField] SpriteRenderer[] babyBody;
+    [Header("Baby Limb Activity Variables")]
+    [Range(0f,1f)] public float moveMult;
+    [Range(0f, 10f)]public float limbMovementSpeed;
+    [SerializeField] AnimationCurve[] movementCurves;
+    [SerializeField] PivotNode[] joints;
+    [Header("Baby Variables")]
+    [SerializeField] SkinVariants[] skinVariations;
     void Start()
     {
         //SetSkinBlue(1, "white");
+        foreach (PivotNode x in joints)
+        {
+            x.SetManager(this);
+        }
     }
     private void Update()
     {
 
     }
-    private IEnumerator BreatheIn()
+    private void BreatheIn()
     {
+        //Debug.Log("In");
         float breatheWait = breatheHeldFor, chestSize = chestExpansion;
         switch (breathingRate)
         {
@@ -40,50 +54,41 @@ public class Babycontroller : MonoBehaviour
                 breatheWait = 0f;
                 break;
             case 1:
-                breatheWait = Random.Range(breatheHeldFor - (breatheHeldFor * 0.9f), breatheHeldFor + (breatheHeldFor * 2f));
+                breatheWait = Random.Range(breatheHeldFor - (breatheHeldFor * 0.7f), breatheHeldFor + (breatheHeldFor * 2f));
                 break;
         }
-        yield return new WaitForSeconds(breatheWait);
-        currentTween = Tween.Value(1, chestSize, SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback: () => CallbackIntermediate(false));
+        currentTween = Tween.Value(1, chestSize, SetWidth, breathTween.duration, breatheWait, breathTween.easeCurve, completeCallback: BreatheOut);
     }
-    private IEnumerator BreatheOut()
+    private void BreatheOut()
     {
-        float breatheWait = breatheHeldFor, chestSize = chestExpansion;
+        //Debug.Log("Out");
+        float chestSize = chestExpansion;
         if (breathingRate == 0)
         {
             chestSize = 1;
         }
-        yield return new WaitForSeconds(breatheWait);
-        currentTween = Tween.Value(chestSize, 1, SetWidth, breathTween.duration, 0f, breathTween.easeCurve, completeCallback: () => CallbackIntermediate(true));
+        currentTween = Tween.Value(chestSize, 1, SetWidth, breathTween.duration, breatheHeldFor, breathTween.easeCurve, completeCallback: BreatheIn);
     }
     public void StartBreathing(int breathingIntensity)
     {
+        breathingRate = breathingIntensity;
         if (!currentlyBreathing)
         {
             currentlyBreathing = true;
-            CallbackIntermediate(true);
+            currentTween?.Cancel();
+            babyChest.transform.localScale = initSize;
+            BreatheIn();
         }
-        breathingRate = breathingIntensity;
     }
     public void StopBreathing()
     {
-        babyChest.transform.localScale = initSize;
-        currentTween.Cancel();
+        //currentTween.Cancel();
+        //babyChest.transform.localScale = initSize;
         currentlyBreathing = false;
-    }
-    private void CallbackIntermediate(bool x)
-    {
-        if (x)
-        {
-            StartCoroutine(BreatheIn());
-        }
-        else
-        {
-            StartCoroutine(BreatheOut());
-        }
     }
     private void SetWidth(float w)
     {
+        //Debug.Log(w);
         babyChest.transform.localScale = new Vector2(w, 1);
         //Debug.Log(babyChest.size);
     }
@@ -130,10 +135,10 @@ public class Babycontroller : MonoBehaviour
             switch (blueLevel)
             {
                 case 0:
-                    output = ColourRandomRange(Vector3ToColour(ColourToVector3(matchingGradient.bestSkin) - (scaleMidpoint*gap)), matchingGradient.bestSkin);
+                    output = ColourRandomRange(Vector3ToColour(ColourToVector3(matchingGradient.bestSkin) - (scaleMidpoint * gap)), matchingGradient.bestSkin);
                     break;
                 case > 0:
-                    output = ColourRandomRange(matchingGradient.worstSkin, Vector3ToColour(ColourToVector3(matchingGradient.bestSkin) - (scaleMidpoint*(2-gap))));
+                    output = ColourRandomRange(matchingGradient.worstSkin, Vector3ToColour(ColourToVector3(matchingGradient.bestSkin) - (scaleMidpoint * (2 - gap))));
                     break;
             }
             Opencrib.Instance.SetBabyHue(output);
@@ -192,8 +197,20 @@ public class Babycontroller : MonoBehaviour
     private Color ColourRandomRange(Color min, Color max)
     {
         Vector3 diff = ColourToVector3(max) - ColourToVector3(min);
-        Vector3  output = (diff * Random.Range(0f,1f)) + ColourToVector3(min);
+        Vector3 output = (diff * Random.Range(0f, 1f)) + ColourToVector3(min);
         return Vector3ToColour(output);
+    }
+
+    public AnimationCurve getTweenCurve()
+    {
+        return movementCurves[Random.Range(0, movementCurves.Count())];
+    }
+    public void UpdateLimbMovement(int y)
+    {
+        foreach (PivotNode x in joints)
+        {
+            x.Set(y);
+        }
     }
 }
 
