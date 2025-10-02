@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -115,7 +116,8 @@ public class Crib : Nursepathnode
         {
             blue = OTT();
         }
-        baby = new Baby("white", blue, x, OTT(), OTT(), resp);
+        int max = Babycontroller.Instance.skinVariations.Count();
+        baby = new Baby(Babycontroller.Instance.skinVariations[Random.Range(0, max)].colour, blue, x, OTT(), OTT(), resp);
 
         //Debug.Log(baby);
         cribSprite.sprite = full;

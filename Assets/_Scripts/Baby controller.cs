@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 public class Babycontroller : MonoBehaviour
 {
+    public static Babycontroller Instance;
     [Header("Baby Breathing Variables")]
     [SerializeField] float breatheHeldFor = 0.5f;
     [SerializeField][Range(1f, 1.5f)] float chestExpansion = 10f;
@@ -30,9 +31,10 @@ public class Babycontroller : MonoBehaviour
     [SerializeField] AnimationCurve[] movementCurves;
     [SerializeField] PivotNode[] joints;
     [Header("Baby Variables")]
-    [SerializeField] SkinVariants[] skinVariations;
-    void Start()
+    [SerializeField] public SkinVariants[] skinVariations;
+    void Awake()
     {
+        Instance = this;
         //SetSkinBlue(1, "white");
         foreach (PivotNode x in joints)
         {
