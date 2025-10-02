@@ -6126,7 +6126,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  midpoint: 0.1
+  midpoint: 0.25
   gap: 0.95
   gradientList:
   - name: white
@@ -6141,6 +6141,33 @@ MonoBehaviour:
   - {fileID: 1700581588}
   - {fileID: 547887752}
   - {fileID: 1459886368}
+  blueChangeTween:
+    duration: 1
+    delay: 0
+    easeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   moveMult: 0.4
   limbMovementSpeed: 5
   movementCurves:

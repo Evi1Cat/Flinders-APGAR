@@ -25,6 +25,7 @@ public class Babycontroller : MonoBehaviour
     [SerializeField][Range(0f, 1f)] float gap;
     [SerializeField] SkinGradient[] gradientList;
     [SerializeField] SpriteRenderer[] babyBody;
+    [SerializeField] TweenVars blueChangeTween;
     [Header("Baby Limb Activity Variables")]
     [Range(0f,1f)] public float moveMult;
     [Range(0f, 10f)]public float limbMovementSpeed;
@@ -117,7 +118,7 @@ public class Babycontroller : MonoBehaviour
         }
     }
 
-    public void SetSkinBlue(int blueLevel, string skinColour)
+    public void SetSkinBlue(int blueLevel, string skinColour, bool alreadyOpen)
     {
         SkinGradient matchingGradient = gradientList[0];
         Color output = matchingGradient.bestSkin;
@@ -158,22 +159,33 @@ public class Babycontroller : MonoBehaviour
             switch (blueLevel)
             {
                 case 0:
-                    x.color = output;
+                    BlueFade(x, output, alreadyOpen);
                     break;
                 case 1:
                     if (objName == "337")
                     {
-                        x.color = output;
+                        BlueFade(x, output, alreadyOpen);
                     }
                     else
                     {
-                        x.color = matchingGradient.bestSkin;
+                        BlueFade(x, matchingGradient.bestSkin, alreadyOpen);
                     }
                     break;
                 case 2:
-                    x.color = output;
+                    BlueFade(x, output, alreadyOpen);
                     break;
             }
+        }
+    }
+    private void BlueFade(SpriteRenderer x, Color y, bool alreadyOpen)
+    {
+        if(alreadyOpen)
+        {
+            Tween.Color(x, y, blueChangeTween.duration, blueChangeTween.delay, blueChangeTween.easeCurve);
+        }
+        else
+        {
+            x.color = y;
         }
     }
     private Vector3 ColourToVector3(Color x)

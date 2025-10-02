@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Crib : Nursepathnode
 {
     public bool nurseOnTheWay = false;
-    public delegate void TimerTick(int time);
+    public delegate void TimerTick(int time, bool alreadyOpen);
     public TimerTick timerTick;
     [SerializeField] Sprite empty, full;
     [SerializeField] Opencrib openCrib;
@@ -32,7 +32,6 @@ public class Crib : Nursepathnode
     {
         if (baby != null)
         {
-            timerTick((int)babyTimer);
             babyTimer += Time.deltaTime * GameManager.instance.timeSpeedModifier;
             if (checkIndex < APGAR_Check_Times.Count) // if there are more APGAR checks to do
             {
@@ -73,7 +72,7 @@ public class Crib : Nursepathnode
         }
     }
 
-    void TickUpdate(int x)
+    void TickUpdate(int x, bool alreadyOpen)
     {
 
     }
@@ -81,7 +80,7 @@ public class Crib : Nursepathnode
     public void OpenCrib()
     {
         openCrib.Open(baby, this);
-        timerTick((int)babyTimer);
+        timerTick((int)babyTimer, false);
     }
     public void CloseCrib()
     {
@@ -106,18 +105,24 @@ public class Crib : Nursepathnode
                 x = Random.Range(1f, 99f);
                 break;
         }
-        int resp = 0;
-        if (x > 30)
+        int resp = 0, grim = 0, act = 0;
+        if (x > 0)
         {
             resp = OTT();
+            grim = OTT();
+            act = OTT();
         }
         int blue = 0;
-        if (resp < 2 || x < 30)
+        if (resp > 0 && x > 30)
         {
             blue = OTT();
         }
-        int max = Babycontroller.Instance.skinVariations.Count();
-        baby = new Baby(Babycontroller.Instance.skinVariations[Random.Range(0, max)].colour, blue, x, OTT(), OTT(), resp);
+        else if (x > 0)
+        {
+            blue = 1;
+        }
+            int max = Babycontroller.Instance.skinVariations.Count();
+        baby = new Baby(Babycontroller.Instance.skinVariations[Random.Range(0, max)].colour, blue, x, grim, act, resp);
 
         //Debug.Log(baby);
         cribSprite.sprite = full;
@@ -235,6 +240,7 @@ public class Crib : Nursepathnode
 
             baby.UpdateStats(x[0], HeartRateConversion(x[1]), x[2], x[3], x[4]);
         }
+        timerTick((int)babyTimer, true);
     }
     private float HeartRateConversion(int x)
     {

@@ -32,7 +32,7 @@ public class PivotNode : MonoBehaviour
                     break;
                 case 1:
                     currentlyPerforming = 1;
-                    Debug.Log(currentTween?.Status);
+                    //Debug.Log(currentTween?.Status);
                     if (currentTween == null || currentTween.Status == Tween.TweenStatus.Finished || currentTween.Status == Tween.TweenStatus.Canceled)
                     {
                         RandomizeRot();
