@@ -31,6 +31,11 @@ public class Babycontroller : MonoBehaviour
     [Range(0f, 10f)]public float limbMovementSpeed;
     [SerializeField] AnimationCurve[] movementCurves;
     [SerializeField] PivotNode[] joints;
+    [Header("Baby Grimace Variables")]
+    [SerializeField] SpriteRenderer[] facerenderer;
+    [SerializeField] Sprite[] babyFaces;
+    [SerializeField] TweenVars faceFadeVars;
+    private TweenBase faceFaceTween;
     [Header("Baby Variables")]
     [SerializeField] public SkinVariants[] skinVariations;
     void Awake()
