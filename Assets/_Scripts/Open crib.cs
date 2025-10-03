@@ -72,6 +72,10 @@ public class Opencrib : MonoBehaviour
     {
         return currentBaby.setHue;
     }
+    public int GetbabyGrimace()
+    {
+        return currentBaby.Check_apGar();
+    }
 
     private void UpdateText(int timeInSeconds, bool alreadyOpen)
     {
@@ -89,7 +93,6 @@ public class Opencrib : MonoBehaviour
             baby.SetSkinColour(currentBaby.CheckSkinColour());
             baby.SetSkinBlue(currentBaby.Check_Apgar(), "white", alreadyOpen);
             pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
-            irritability.text = "" + currentBaby.Check_apGar();
             baby.UpdateLimbMovement(currentBaby.Check_apgAr());
             baby.StartBreathing(currentBaby.Check_apgaR());
         }

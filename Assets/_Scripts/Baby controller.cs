@@ -27,13 +27,12 @@ public class Babycontroller : MonoBehaviour
     [SerializeField] SpriteRenderer[] babyBody;
     [SerializeField] TweenVars blueChangeTween;
     [Header("Baby Limb Activity Variables")]
-    [Range(0f,1f)] public float moveMult;
-    [Range(0f, 10f)]public float limbMovementSpeed;
+    [Range(0f, 1f)] public float moveMult;
+    [Range(0f, 10f)] public float limbMovementSpeed;
     [SerializeField] AnimationCurve[] movementCurves;
     [SerializeField] PivotNode[] joints;
     [Header("Baby Grimace Variables")]
-    [SerializeField] SpriteRenderer[] facerenderer;
-    [SerializeField] Sprite[] babyFaces;
+    [SerializeField] SpriteRenderer[] faceRenderers;
     [SerializeField] TweenVars faceFadeVars;
     private TweenBase faceFaceTween;
     [Header("Baby Variables")]
@@ -184,7 +183,7 @@ public class Babycontroller : MonoBehaviour
     }
     private void BlueFade(SpriteRenderer x, Color y, bool alreadyOpen)
     {
-        if(alreadyOpen)
+        if (alreadyOpen)
         {
             Tween.Color(x, y, blueChangeTween.duration, blueChangeTween.delay, blueChangeTween.easeCurve);
         }
@@ -230,6 +229,45 @@ public class Babycontroller : MonoBehaviour
         {
             x.Set(y);
         }
+    }
+
+    public void SetFace(int babyGrimace)
+    {
+        
+        switch (babyGrimace)
+        {
+            case 0:
+                break;
+            case 1:
+                ChooseFace(false, true, false, 0);
+                break;
+            case 2:
+                ChooseFace(false, false, true, 0);
+                break;
+        }
+    }
+    private void ChooseFace(bool nuetral, bool peeved, bool upset, float replay)
+    {
+        if (replay < 2)
+        {
+            Tween.Value(faceRenderers[0].color.a, 1f, (x)=> SetFaceAlpha(x, faceRenderers[0], nuetral), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve, completeCallback: ()=> ChooseFace(true, false, false, replay+1));
+            
+            Tween.Value(faceRenderers[1].color.a, 1f, (x)=> SetFaceAlpha(x, faceRenderers[1], peeved), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve);
+            Tween.Value(faceRenderers[2].color.a, 1f, (x)=> SetFaceAlpha(x, faceRenderers[2], upset), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve);
+        }
+    }
+    private void SetFaceAlpha(float x, SpriteRenderer face, bool setActive)
+    {
+        Color temp = face.color;
+        if (setActive)
+        {
+            temp.a = x;
+        }
+        else
+        {
+            temp.a = 1f - x;
+        }
+        face.color = temp;
     }
 }
 

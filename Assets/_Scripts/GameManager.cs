@@ -1,4 +1,7 @@
 using System;
+using Pixelplacement;
+using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +13,8 @@ public class GameManager : MonoBehaviour
     public delegate void PointChange();
     public PointChange Increase, Decrease;
     public int points = 0;
+    [SerializeField] CanvasGroup gameWinScreen;
+    [SerializeField] TweenVars winScreenFadeVars;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -28,6 +33,16 @@ public class GameManager : MonoBehaviour
     private void GainPoints()
     {
         points++;
+        if (points >= 10)
+        {
+            //Add win script here
+            GetComponent<BabyInputStream>().activeGame = false;
+            Tween.Value(gameWinScreen.alpha, 1f, SetWinScreenAlpha, winScreenFadeVars.duration, winScreenFadeVars.delay, winScreenFadeVars.easeCurve);
+        }
+    }
+    private void SetWinScreenAlpha(float x)
+    {
+        gameWinScreen.alpha = x;
     }
     private void LosePoints()
     {

@@ -209,6 +209,15 @@ MonoBehaviour:
   nurseOnTheWay: 0
   empty: {fileID: -6244305828355252529, guid: 0a4b41d3c41c42340b42dbfa60c28502, type: 3}
   full: {fileID: -8691724079721320467, guid: 1e2ae8b35c02b88458203bccd62da40f, type: 3}
+  fullCribs:
+  - skinColour: white
+    crib: {fileID: 0}
+  - skinColour: tan
+    crib: {fileID: 0}
+  - skinColour: brown
+    crib: {fileID: 0}
+  - skinColour: black
+    crib: {fileID: 0}
   openCrib: {fileID: 0}
   babyTimer: 0
 --- !u!1 &5255963468052048677

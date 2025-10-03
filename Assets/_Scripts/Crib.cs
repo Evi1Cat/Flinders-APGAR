@@ -10,6 +10,7 @@ public class Crib : Nursepathnode
     public delegate void TimerTick(int time, bool alreadyOpen);
     public TimerTick timerTick;
     [SerializeField] Sprite empty, full;
+    [SerializeField] FullCribSprites[] fullCribs;
     [SerializeField] Opencrib openCrib;
     private int checkIndex = 0, healthy = -1;
     public float babyTimer = 0f;
@@ -113,19 +114,26 @@ public class Crib : Nursepathnode
             act = OTT();
         }
         int blue = 0;
-        if (resp > 0 && x > 30)
+        if (resp < 2 && x < 30)
         {
             blue = OTT();
         }
-        else if (x > 0)
+        if (x == 0)
         {
-            blue = 1;
+            blue = 0;
         }
-            int max = Babycontroller.Instance.skinVariations.Count();
+        int max = Babycontroller.Instance.skinVariations.Count();
         baby = new Baby(Babycontroller.Instance.skinVariations[Random.Range(0, max)].colour, blue, x, grim, act, resp);
 
         //Debug.Log(baby);
-        cribSprite.sprite = full;
+        foreach (FullCribSprites y in fullCribs)
+        {
+            if (y.skinColour == baby.CheckSkinColour())
+            {
+                //cribSprite.sprite = y.crib;
+                cribSprite.sprite = full;
+            }
+        }
     }
 
     public bool Occupied()
@@ -204,41 +212,41 @@ public class Crib : Nursepathnode
                 change = 1;
             }
 
-            int[] x = new int[5];
-            x[0] = baby.Check_Apgar();
+            int x = 0;
             switch (baby.Check_aPgar())
             {
                 case > 100:
-                    x[1] = 2;
+                    x = 2;
                     break;
                 case > 0:
-                    x[1] = 1;
+                    x = 1;
                     break;
                 case 0:
-                    x[1] = 0;
+                    x = 0;
                     break;
             }
-            x[2] = baby.Check_apGar();
-            x[3] = baby.Check_apgAr();
-            x[4] = baby.Check_apgaR();
-
-            for (int i = 0; i < x.Length; i++)
+            if (0 <= x + change && x + change <= 2)
             {
-                bool loop = true;
-                while (loop)
-                {
-                    if (Random.Range(0f, 100f) < GameManager.instance.babySettings.symptomChangeChance && x[i] + change <= 2 && x[i] + change >= 0)
-                    {
-                        x[i] += change;
-                    }
-                    else
-                    {
-                        loop = false;
-                    }
-                }
+                x = baby.Check_Apgar() + change;
             }
-
-            baby.UpdateStats(x[0], HeartRateConversion(x[1]), x[2], x[3], x[4]);
+            
+            int resp = 0, grim = 0, act = 0;
+            if (x > 0)
+            {
+                resp = OTT();
+                grim = OTT();
+                act = OTT();
+            }
+            int blue = 0;
+            if (resp < 2 && x < 30)
+            {
+                blue = OTT();
+            }
+            if (x == 0)
+            {
+                blue = 0;
+            }
+            baby.UpdateStats(blue, HeartRateConversion(x), grim, act, resp);
         }
         timerTick((int)babyTimer, true);
     }
@@ -296,6 +304,12 @@ public class CheckTime
     {
         checkTime = x;
     }
+}
+[Serializable]
+public class FullCribSprites
+{
+    public string skinColour;
+    public Sprite crib;
 }
 
 

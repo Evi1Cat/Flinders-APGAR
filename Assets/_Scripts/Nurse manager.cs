@@ -21,14 +21,18 @@ public class Nursemanager : MonoBehaviour
     }
     public void SendNurse(Crib targetCrib, bool deliverBaby)
     {
-        Nursemovement newNurse = Instantiate(nursePrefab).GetComponent<Nursemovement>();
-        if (deliverBaby)
+        if (!targetCrib.nurseOnTheWay)
         {
-            newNurse.AddPath(MakePath(targetCrib, deliverNode), targetCrib);
-        }
-        else
-        {
-            newNurse.AddPath(MakePath(targetCrib, retrieveNode), targetCrib);
+            targetCrib.nurseOnTheWay = true;
+            Nursemovement newNurse = Instantiate(nursePrefab).GetComponent<Nursemovement>();
+            if (deliverBaby)
+            {
+                newNurse.AddPath(MakePath(targetCrib, deliverNode), targetCrib);
+            }
+            else
+            {
+                newNurse.AddPath(MakePath(targetCrib, retrieveNode), targetCrib);
+            }
         }
     }
 
@@ -84,7 +88,7 @@ public class Nursemanager : MonoBehaviour
             }
             Debug.Log(x);
         }
-            return path;
+        return path;
         //Makes the nurse and sends them on their way
     }
 
