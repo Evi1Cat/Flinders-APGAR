@@ -130,8 +130,7 @@ public class Crib : Nursepathnode
         {
             if (y.skinColour == baby.CheckSkinColour())
             {
-                //cribSprite.sprite = y.crib;
-                cribSprite.sprite = full;
+                cribSprite.sprite = y.crib;
             }
         }
     }

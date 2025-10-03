@@ -211,13 +211,13 @@ MonoBehaviour:
   full: {fileID: -8691724079721320467, guid: 1e2ae8b35c02b88458203bccd62da40f, type: 3}
   fullCribs:
   - skinColour: white
-    crib: {fileID: 0}
+    crib: {fileID: -8691724079721320467, guid: 1e2ae8b35c02b88458203bccd62da40f, type: 3}
   - skinColour: tan
-    crib: {fileID: 0}
+    crib: {fileID: 2933796769219763774, guid: a4928a65c1e82cd40b1ff2a7ca4e4250, type: 3}
   - skinColour: brown
-    crib: {fileID: 0}
+    crib: {fileID: 7520727101856530695, guid: 5abbee0723568b5498ed8acb84b9b7d9, type: 3}
   - skinColour: black
-    crib: {fileID: 0}
+    crib: {fileID: -5715948570260365001, guid: 46fb6ce475e4b084c8b13a49f6766e06, type: 3}
   openCrib: {fileID: 0}
   babyTimer: 0
 --- !u!1 &5255963468052048677
