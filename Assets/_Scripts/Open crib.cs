@@ -91,7 +91,7 @@ public class Opencrib : MonoBehaviour
         if (openedCrib != null)
         {
             baby.SetSkinColour(currentBaby.CheckSkinColour());
-            baby.SetSkinBlue(currentBaby.Check_Apgar(), "white", alreadyOpen);
+            baby.SetSkinBlue(currentBaby.Check_Apgar(), currentBaby.CheckSkinColour(), alreadyOpen);
             pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
             baby.UpdateLimbMovement(currentBaby.Check_apgAr());
             baby.StartBreathing(currentBaby.Check_apgaR());

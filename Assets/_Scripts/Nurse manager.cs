@@ -28,10 +28,12 @@ public class Nursemanager : MonoBehaviour
             if (deliverBaby)
             {
                 newNurse.AddPath(MakePath(targetCrib, deliverNode), targetCrib);
+                AudioManager.Instance.PlaySoundEffect("EnterLeft");
             }
             else
             {
                 newNurse.AddPath(MakePath(targetCrib, retrieveNode), targetCrib);
+                AudioManager.Instance.PlaySoundEffect("EnterRight");
             }
         }
     }

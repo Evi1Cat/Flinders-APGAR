@@ -113,12 +113,12 @@ public class Crib : Nursepathnode
             grim = OTT();
             act = OTT();
         }
-        int blue = 0;
-        if (resp < 2 && x < 30)
+        int blue = 2;
+        if (resp < 2 || x < 30)
         {
             blue = OTT();
         }
-        if (x == 0)
+        if (x == 0 || resp == 0)
         {
             blue = 0;
         }
@@ -270,6 +270,7 @@ public class Crib : Nursepathnode
         {
             return true;
         }
+        //Debug.Log(baby.CheckAPGAR() + " | appearance: " + baby.Check_Apgar() + " - pulse: " + baby.Check_aPgar() + " - grimace: " + baby.Check_apGar() + " - activity: " + baby.Check_apgAr() + " - respiration: " + baby.Check_apgaR());
         /*if (baby.CheckAPGAR() <= 6 && APGAR_Check_Times[^1].checkTime < babyTimer)
         {
             Debug.Log("baby.CheckAPGAR() <= 6 && APGAR_Check_Times[APGAR_Check_Times.Count].checkTime < babyTimer");
@@ -280,9 +281,9 @@ public class Crib : Nursepathnode
             Debug.Log("baby.CheckAPGAR() <= 3");
             return true;
         }
-        if (baby.Check_apgaR() <= 50)
+        if (baby.Check_apgaR() == 0)
         {
-            Debug.Log("baby.Check_apgaR() <= 50");
+            Debug.Log("baby.Check_apgaR() == 0");
             return true;
         }
         if (baby.Check_aPgar() == 0)

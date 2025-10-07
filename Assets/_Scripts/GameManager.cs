@@ -1,8 +1,10 @@
 using System;
 using Pixelplacement;
+using Pixelplacement.TweenSystem;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int points = 0;
     [SerializeField] CanvasGroup gameWinScreen;
     [SerializeField] TweenVars winScreenFadeVars;
+    private TweenBase gameEndScreenTween;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -33,11 +36,17 @@ public class GameManager : MonoBehaviour
     private void GainPoints()
     {
         points++;
+        AudioManager.Instance.PlaySoundEffect("BabySaved");
         if (points >= 10)
         {
             //Add win script here
             GetComponent<BabyInputStream>().activeGame = false;
-            Tween.Value(gameWinScreen.alpha, 1f, SetWinScreenAlpha, winScreenFadeVars.duration, winScreenFadeVars.delay, winScreenFadeVars.easeCurve);
+            if (gameEndScreenTween == null)
+            {
+                gameWinScreen.blocksRaycasts = true;
+                gameEndScreenTween = Tween.Value(gameWinScreen.alpha, 1f, SetWinScreenAlpha, winScreenFadeVars.duration, winScreenFadeVars.delay, winScreenFadeVars.easeCurve);
+                AudioManager.Instance.PlaySoundEffect("GameWin" + Random.Range(1,3));
+            }
         }
     }
     private void SetWinScreenAlpha(float x)
@@ -47,6 +56,7 @@ public class GameManager : MonoBehaviour
     private void LosePoints()
     {
         points--;
+        AudioManager.Instance.PlaySoundEffect("BabyDies");
     }
 }
 

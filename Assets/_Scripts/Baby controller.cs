@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -53,18 +54,25 @@ public class Babycontroller : MonoBehaviour
     private void BreatheIn()
     {
         //Debug.Log("In");
-        float breatheWait = breatheHeldFor, chestSize = chestExpansion;
-        switch (breathingRate)
+        if (gameObject.activeInHierarchy)
         {
-            case 0:
-                chestSize = 1;
-                breatheWait = 0f;
-                break;
-            case 1:
-                breatheWait = Random.Range(breatheHeldFor - (breatheHeldFor * 0.7f), breatheHeldFor + (breatheHeldFor * 2f));
-                break;
+            float breatheWait = breatheHeldFor, chestSize = chestExpansion;
+            switch (breathingRate)
+            {
+                case 0:
+                    chestSize = 1;
+                    breatheWait = 0f;
+                    break;
+                case 1:
+                    breatheWait = Random.Range(breatheHeldFor - (breatheHeldFor * 0.7f), breatheHeldFor + (breatheHeldFor * 2f));
+                    StartCoroutine(BreatheNoise(breatheWait, false));
+                    break;
+                case 2:
+                    StartCoroutine(BreatheNoise(breatheWait, true));
+                    break;
+            }
+            currentTween = Tween.Value(1, chestSize, SetWidth, breathTween.duration, breatheWait, breathTween.easeCurve, completeCallback: BreatheOut);
         }
-        currentTween = Tween.Value(1, chestSize, SetWidth, breathTween.duration, breatheWait, breathTween.easeCurve, completeCallback: BreatheOut);
     }
     private void BreatheOut()
     {
@@ -75,6 +83,19 @@ public class Babycontroller : MonoBehaviour
             chestSize = 1;
         }
         currentTween = Tween.Value(chestSize, 1, SetWidth, breathTween.duration, breatheHeldFor, breathTween.easeCurve, completeCallback: BreatheIn);
+    }
+    private IEnumerator BreatheNoise(float wait, bool healthy)
+    {
+        yield return new WaitForSeconds(wait);
+        Debug.Log("PlayingBreathingNoise");
+        if (healthy)
+        {
+            AudioManager.Instance.PlaySoundEffect("HealthyBreath" + Random.Range(1, 5));
+        }
+        else
+        {
+            AudioManager.Instance.PlaySoundEffect("UnhealthyBreath" + Random.Range(1, 5));
+        }
     }
     public void StartBreathing(int breathingIntensity)
     {
@@ -133,6 +154,7 @@ public class Babycontroller : MonoBehaviour
             {
                 if (x.name == skinColour)
                 {
+                    //Debug.Log(x.name + " matches with " + skinColour);
                     matchingGradient = x;
                 }
             }
@@ -141,10 +163,10 @@ public class Babycontroller : MonoBehaviour
             //Debug.Log("Best: " + ColourToVector3(bestSkin) + " | Worst: " + ColourToVector3(worstSkin) + " | Diff: " + diff);
             switch (blueLevel)
             {
-                case 0:
+                case 2:
                     output = ColourRandomRange(Vector3ToColour(ColourToVector3(matchingGradient.bestSkin) - (scaleMidpoint * gap)), matchingGradient.bestSkin);
                     break;
-                case > 0:
+                case < 2:
                     output = ColourRandomRange(matchingGradient.worstSkin, Vector3ToColour(ColourToVector3(matchingGradient.bestSkin) - (scaleMidpoint * (2 - gap))));
                     break;
             }
@@ -243,6 +265,7 @@ public class Babycontroller : MonoBehaviour
                 break;
             case 2:
                 ChooseFace(false, false, true, 0);
+                AudioManager.Instance.PlaySoundEffect("BabyCry"+Random.Range(1,5));
                 break;
         }
     }

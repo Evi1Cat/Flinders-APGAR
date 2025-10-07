@@ -42,6 +42,7 @@ public class Nursemovement : MonoBehaviour
         else
         {
             targetCrib.NewBaby();
+            AudioManager.Instance.PlaySoundEffect("SpawnMum"+Random.Range(1,4));
         }
         targetCrib.nurseOnTheWay = false;
         targetCrib.CloseCrib();

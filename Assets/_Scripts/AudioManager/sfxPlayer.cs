@@ -11,7 +11,7 @@ public class sfxPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GetComponent<AudioSource>().isPlaying)
+        if (!GetComponent<AudioSource>().isPlaying)
         {
             gameObject.SetActive(false);
         }

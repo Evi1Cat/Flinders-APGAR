@@ -4118,7 +4118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c207a9ab0b0cbfa4b8aa5269755f8b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSpeedModifier: 5
+  timeSpeedModifier: 3
   babySettings:
     APGAR_Check_Times:
     - 60
@@ -5888,6 +5888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MainMenu
+  songName: MenuMusic
 --- !u!114 &1680196094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6859,11 +6860,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df798f7c55c44c946b3847aab79b7866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breatheHeldFor: 0.5
+  breatheHeldFor: 0.1
   chestExpansion: 1.03
   babyChest: {fileID: 1656363238}
   breathTween:
-    duration: 0.8
+    duration: 0.3
     delay: 0
     easeCurve:
       serializedVersion: 2
@@ -6889,12 +6890,21 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  midpoint: 0.25
-  gap: 0.95
+  midpoint: 0.4
+  gap: 0.5
   gradientList:
   - name: white
     bestSkin: {r: 1, g: 1, b: 1, a: 1}
-    worstSkin: {r: 0.7264151, g: 0.7872118, b: 1, a: 1}
+    worstSkin: {r: 0.75157225, g: 0.8077643, b: 1, a: 1}
+  - name: tan
+    bestSkin: {r: 1, g: 1, b: 1, a: 1}
+    worstSkin: {r: 0.5281239, g: 0.56352353, b: 0.8113208, a: 1}
+  - name: brown
+    bestSkin: {r: 1, g: 1, b: 1, a: 1}
+    worstSkin: {r: 0.47285512, g: 0.5659996, b: 0.7264151, a: 1}
+  - name: black
+    bestSkin: {r: 1, g: 1, b: 1, a: 1}
+    worstSkin: {r: 0.5246825, g: 0.6426154, b: 0.6981132, a: 1}
   babyBody:
   - {fileID: 1656363238}
   - {fileID: 2120694473}
