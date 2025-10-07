@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="p" format="1">
+  <advance width="671"/>
+  <unicode hex="0070"/>
+  <outline>
+    <contour>
+      <point x="136.396" y="524" type="line"/>
+      <point x="79.3955" y="524" type="line"/>
+      <point x="65.8184" y="447" type="line"/>
+      <point x="122.818" y="447" type="line"/>
+    </contour>
+    <contour>
+      <point x="210.439" y="-196" type="line"/>
+      <point x="276.439" y="-196" type="line"/>
+      <point x="292.31" y="-106" type="line"/>
+      <point x="226.31" y="-106" type="line"/>
+    </contour>
+    <contour>
+      <point x="9.43945" y="-196" type="line"/>
+      <point x="24.7803" y="-109" type="line"/>
+      <point x="-32.2197" y="-109" type="line"/>
+      <point x="-47.5605" y="-196" type="line"/>
+    </contour>
+    <contour>
+      <point x="249.143" y="239" type="line" smooth="yes"/>
+      <point x="272.417" y="371"/>
+      <point x="323.171" y="449"/>
+      <point x="404.171" y="449" type="curve" smooth="yes"/>
+      <point x="488.171" y="449"/>
+      <point x="502.067" y="352"/>
+      <point x="487.256" y="268" type="curve" smooth="yes"/>
+      <point x="471.915" y="181"/>
+      <point x="431.813" y="67"/>
+      <point x="337.813" y="67" type="curve" smooth="yes"/>
+      <point x="301.545" y="67"/>
+      <point x="277.832" y="81.4551"/>
+      <point x="263.333" y="103.972" type="curve"/>
+      <point x="248.94" y="22.3477" type="line"/>
+      <point x="275.316" y="-1.94629"/>
+      <point x="311.347" y="-13"/>
+      <point x="350.708" y="-13" type="curve" smooth="yes"/>
+      <point x="486.708" y="-13"/>
+      <point x="590.69" y="106"/>
+      <point x="618.197" y="262" type="curve" smooth="yes"/>
+      <point x="645.705" y="418"/>
+      <point x="584.864" y="538"/>
+      <point x="454.864" y="538" type="curve" smooth="yes"/>
+      <point x="401.864" y="538"/>
+      <point x="333.337" y="518"/>
+      <point x="283.173" y="432" type="curve"/>
+      <point x="299.396" y="524" type="line"/>
+      <point x="174.396" y="524" type="line"/>
+      <point x="47.4395" y="-196" type="line"/>
+      <point x="172.439" y="-196" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+	<key>hhints</key>
+	<array>
+	  <dict>
+	    <key>position</key>	    <integer>-13</integer>
+	    <key>width</key>	    <integer>80</integer>
+	  </dict>
+	  <dict>
+	    <key>position</key>	    <integer>449</integer>
+	    <key>width</key>	    <integer>89</integer>
+	  </dict>
+	</array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glyph name="X" format="1">
+  <advance width="975"/>
+  <unicode hex="0058"/>
+  <outline>
+    <contour>
+      <point x="661.404" y="652" type="line"/>
+      <point x="749.527" y="742" type="line"/>
+      <point x="606.835" y="742" type="line"/>
+      <point x="590.965" y="652" type="line"/>
+    </contour>
+    <contour>
+      <point x="438" y="742" type="line"/>
+      <point x="488.308" y="652" type="line"/>
+      <point x="528.965" y="652" type="line"/>
+      <point x="544.835" y="742" type="line"/>
+    </contour>
+    <contour>
+      <point x="960.195" y="727.03" type="line"/>
+      <point x="884.725" y="652" type="line"/>
+      <point x="946.965" y="652" type="line"/>
+    </contour>
+    <contour>
+      <point x="207.448" y="652" type="line"/>
+      <point x="165.732" y="724.405" type="line"/>
+      <point x="152.965" y="652" type="line"/>
+    </contour>
+    <contour>
+      <point x="583.884" y="402" type="line"/>
+      <point x="817.95" y="0" type="line"/>
+      <point x="630.222" y="0" type="line"/>
+      <point x="466.959" y="289" type="line"/>
+      <point x="177.905" y="0" type="line"/>
+      <point x="52.4502" y="0" type="line"/>
+      <point x="420.359" y="365" type="line"/>
+      <point x="203.151" y="742" type="line"/>
+      <point x="390.833" y="742" type="line"/>
+      <point x="538.284" y="478" type="line"/>
+      <point x="798.257" y="742" type="line"/>
+      <point x="925.88" y="742" type="line"/>
+    </contour>
+    <contour>
+      <point x="814.973" y="87" type="line"/>
+      <point x="886.341" y="87" type="line"/>
+      <point x="871" y="0" type="line"/>
+      <point x="865.653" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point x="582.933" y="0" type="line"/>
+      <point x="455" y="0" type="line"/>
+      <point x="470.341" y="87" type="line"/>
+      <point x="533.829" y="87" type="line"/>
+    </contour>
+    <contour>
+      <point x="6.62793" y="3.55859" type="line"/>
+      <point x="21.3408" y="87" type="line"/>
+      <point x="90.6787" y="87" type="line"/>
+    </contour>
+    <contour>
+      <point x="227.212" y="0" type="line"/>
+      <point x="314.481" y="87" type="line"/>
+      <point x="397.341" y="87" type="line"/>
+      <point x="382" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.fontlab.hintData</key>
+      <dict>
+	<key>hhints</key>
+	<array>
+	  <dict>
+	    <key>position</key>	    <integer>0</integer>
+	    <key>width</key>	    <integer>87</integer>
+	  </dict>
+	  <dict>
+	    <key>position</key>	    <integer>722</integer>
+	    <key>width</key>	    <integer>20</integer>
+	  </dict>
+	</array>
+      </dict>
+    </dict>
+  </lib>
+</glyph>
