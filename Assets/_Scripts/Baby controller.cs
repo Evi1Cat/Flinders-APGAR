@@ -87,7 +87,7 @@ public class Babycontroller : MonoBehaviour
     private IEnumerator BreatheNoise(float wait, bool healthy)
     {
         yield return new WaitForSeconds(wait);
-        Debug.Log("PlayingBreathingNoise");
+        //Debug.Log("PlayingBreathingNoise");
         if (healthy)
         {
             AudioManager.Instance.PlaySoundEffect("HealthyBreath" + Random.Range(1, 5));
