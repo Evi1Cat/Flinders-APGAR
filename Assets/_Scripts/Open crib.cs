@@ -20,7 +20,17 @@ public class Opencrib : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(gameObject.activeInHierarchy && openedCrib != null)
+        {
+            int mins = (int)Mathf.Floor(openedCrib.babyTimer / 60f);
+            string seconds = (int)openedCrib.babyTimer - (mins * 60) + "";
+            //Debug.Log(mins + ": " + seconds);
+            if (int.Parse(seconds) < 10)
+            {
+                seconds = 0 + seconds;
+            }
+            timerText.text = mins + ":" + seconds;
+        }
     }
 
     public void Open(Baby x, Crib refer)
@@ -79,15 +89,6 @@ public class Opencrib : MonoBehaviour
 
     private void UpdateText(int timeInSeconds, bool alreadyOpen)
     {
-        int mins = (int)Mathf.Floor((float)timeInSeconds / 60f);
-        String seconds = timeInSeconds - (mins * 60) + "";
-        if (int.Parse(seconds) < 10)
-        {
-            seconds = 0 + seconds;
-        }
-        timerText.text = mins + ":" + seconds;
-
-
         if (openedCrib != null)
         {
             baby.SetSkinColour(currentBaby.CheckSkinColour());
