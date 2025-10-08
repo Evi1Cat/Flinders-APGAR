@@ -4,6 +4,6 @@ public class GrimaceButton : MonoBehaviour
 {
     public void TriggerGrimace()
     {
-        Babycontroller.Instance.SetFace(Opencrib.Instance.GetbabyGrimace());
+        Babycontroller.Instance.TweenHandToChest(Opencrib.Instance.GetbabyGrimace());
     }
 }

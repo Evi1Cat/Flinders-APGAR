@@ -35,6 +35,10 @@ public class Babycontroller : MonoBehaviour
     [Header("Baby Grimace Variables")]
     [SerializeField] SpriteRenderer[] faceRenderers;
     [SerializeField] TweenVars faceFadeVars;
+    [SerializeField] TweenVars handFadeVars;
+    [SerializeField] TweenVars handMoveVars;
+    [SerializeField] Vector3 starPos, endPos;
+    [SerializeField] GameObject hand;
     private TweenBase faceFaceTween;
     [Header("Baby Variables")]
     [SerializeField] public SkinVariants[] skinVariations;
@@ -252,13 +256,25 @@ public class Babycontroller : MonoBehaviour
             x.Set(y);
         }
     }
+    public void TweenHandToChest(int grimmace)
+    {
+        Tween.LocalPosition(hand.transform, starPos, endPos, handMoveVars.duration, handMoveVars.delay, handMoveVars.easeCurve, completeCallback: () => SetFace(grimmace));
+        Tween.Value(0f, 1f, (x) => SetFaceAlpha(x, hand.GetComponent<SpriteRenderer>(), true), handFadeVars.duration, handFadeVars.delay, handFadeVars.easeCurve);
+    }
+    private IEnumerator TweenHandAwayFromChest(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+        Tween.LocalPosition(hand.transform,endPos, starPos, handMoveVars.duration, handMoveVars.delay, handMoveVars.easeCurve);
+        Tween.Value(0f, 1f, (x) => SetFaceAlpha(x, hand.GetComponent<SpriteRenderer>(), false), handFadeVars.duration, handFadeVars.delay, handFadeVars.easeCurve);
+    }
 
-    public void SetFace(int babyGrimace)
+    private void SetFace(int babyGrimace)
     {
         
         switch (babyGrimace)
         {
             case 0:
+                StartCoroutine(TweenHandAwayFromChest(faceFadeVars.duration * 2));
                 break;
             case 1:
                 ChooseFace(false, true, false, 0);
@@ -277,6 +293,10 @@ public class Babycontroller : MonoBehaviour
             
             Tween.Value(faceRenderers[1].color.a, 1f, (x)=> SetFaceAlpha(x, faceRenderers[1], peeved), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve);
             Tween.Value(faceRenderers[2].color.a, 1f, (x)=> SetFaceAlpha(x, faceRenderers[2], upset), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve);
+        }
+        else
+        {
+            StartCoroutine(TweenHandAwayFromChest(0));
         }
     }
     private void SetFaceAlpha(float x, SpriteRenderer face, bool setActive)
