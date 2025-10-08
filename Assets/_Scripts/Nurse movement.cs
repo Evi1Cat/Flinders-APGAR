@@ -6,6 +6,7 @@ public class Nursemovement : MonoBehaviour
 {
     //[Range(0, 100)] public int curvePercent = 0;
     public TweenVars[] nurseTweens = new TweenVars[3];
+    [SerializeField] AnimationCurve turnTweenCurve;
     private Crib targetCrib = null;
     private Nursepathnode home, current;
     private List<Nursepathnode> path;
@@ -22,6 +23,35 @@ public class Nursemovement : MonoBehaviour
 
     private void MoveToNextPoint()
     {
+        /*if (path[1] && path[2])
+        {
+            Vector3 firstDIff = (Vector3)(transform.position - path[1]?.gameObject.transform.position);
+            Vector3 secondDIff = (Vector3)(path[1]?.gameObject.transform.position - path[2]?.gameObject.transform.position);
+            if (firstDIff.x != secondDIff.x && firstDIff.y != secondDIff.y)
+            {
+                float lookTo = 0f;
+                if (firstDIff.x == 0)
+                {
+                    if (secondDIff.y > 0)
+                    {
+                        lookTo = 180f;
+                    }
+                }
+                else if (firstDIff.y == 0)
+                {
+                    if (secondDIff.x > 0)
+                    {
+                        lookTo = 90f;
+                    }
+                    if (secondDIff.x > 0)
+                    {
+                        lookTo = 270f;
+                    }
+                }
+                Tween.LocalRotation(transform, new Vector3(0, 0, lookTo), nurseTweens[1].duration, nurseTweens[1].duration / 2, turnTweenCurve);
+            }
+        }*/
+
         if (path.Count > 1)
         {
             Tween.Position(transform, path[0].transform.position, nurseTweens[1].duration, nurseTweens[1].delay, nurseTweens[1].easeCurve, completeCallback: MoveToNextPoint);
