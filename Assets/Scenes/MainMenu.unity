@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.65
+  m_fontSize: 42.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.2
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3583,7 +3583,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.5
+  m_fontSize: 21.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4083,7 +4083,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.9
+  m_fontSize: 18.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4219,7 +4219,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.65
+  m_fontSize: 42.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5476,7 +5476,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.65
+  m_fontSize: 42.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5612,7 +5612,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.65
+  m_fontSize: 42.85
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6737,7 +6737,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.3
+  m_fontSize: 20.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7179,7 +7179,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.45
+  m_fontSize: 18.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7291,7 +7291,8 @@ MonoBehaviour:
   m_text: In this game, you'll act as a midwife with the one duty of checking the
     health of babies after birth. Using a baby's APGAR score and some common sense,
     you will check up on each baby at 1, 5, and 10 minutes into its life and send
-    it to urgent care if neccessary.
+    it to urgent care if neccessary. If you wish to play the game in fullscreen mode,
+    click the expander icon in the bottom right corner of the game.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a134da77c9828b34d99374a2380a2288, type: 2}
   m_sharedMaterial: {fileID: -266986323281822903, guid: a134da77c9828b34d99374a2380a2288, type: 2}
@@ -7318,7 +7319,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.65
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7564,396 +7565,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.size
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: backgroundMusicList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 622df6012652bdb498c7ec99b1b8a532, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 70e02441ad3cd8f488092b6a4933e446, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3cdf6946b7f8a1549ab339405d1c0146, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: a3723b260c560944ca45ec5b066bc871, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4fb135d3c45ee7343ba34122f8adc35f, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 94244e4581dc6cc4ab25214d816c8c8b, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[8].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: cbf6c5f77f3ff4c449d3d2a6e38df009, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[9].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6c991fc18690e8241b33a44969593376, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[10].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4bd5bbce83228234490960c55c074e84, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[11].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4169dea32dc90504a940f4f40673b86f, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[12].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3b5a6f161bbef684fb634887f53ef006, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[13].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 8c8d904cce6bad44ca9342eb4a985a8b, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[14].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0b1c4fb30708bd04f9d062597c4cface, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[15].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: fc8a7c4f933b5d242a72b6fc715eab54, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[16].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e9049bd296331604f9aeae1067867fd8, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[17].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6cb8db7e856728b479241d7f279940d1, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[18].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: da54348265ffba1408a4667726dab939, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[19].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: f34ae34ffcd54574897393fce509281f, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[20].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4d8d8f3402efbef499394f3d0aa514ec, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[21].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9eda96d1efcc40943a75f7f51cef9f6a, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[22].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 52da697c9a5def948872914649ad8e58, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[23].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5bc28b1da2997ee418e83c5b10b8df29, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[24].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1e2804d0aac973f429ece588d892ce5a, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[25].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ac1df122ec34ea842b798a20a274e4c3, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[26].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: a96ed24e5140588408199898ffd2280b, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[27].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b48fdfa1a48fc0f4aa8a8244739462c6, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[28].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 075e9b2f66c9ddc458f724206d9c3747, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[29].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: a151098b31026eb488bbbc2080b5f405, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[30].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3f00c2acb000b36428ccb4e2a5573f76, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[31].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 60ec46edffaf0d146ac444916701e290, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[32].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: cbbb99bc5480f3f42b222760602153f8, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[33].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d17cd85e7b71217438eb48aee31ea111, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: backgroundMusicList.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4be89ebd6b16776489ff0dcce4253d2e, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: backgroundMusicList.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 437b567b9abb6b84f93c63413be07798, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: backgroundMusicList.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: f9d551f85318c6c4a828e638ea1a8a7f, type: 3}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[7].clipName
-      value: BabyCry1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[8].clipName
-      value: BabyCry2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[9].clipName
-      value: BabyCry3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[10].clipName
-      value: BabyCry4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[11].clipName
-      value: BabyDies
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[12].clipName
-      value: BabyNoise1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[13].clipName
-      value: BabyNoise2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[14].clipName
-      value: BabyNoise3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[15].clipName
-      value: BabyNoise4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[16].clipName
-      value: BabyNoise5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[17].clipName
-      value: BabySaved
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[18].clipName
-      value: GameWin1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[19].clipName
-      value: GameWin2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[20].clipName
-      value: HealthyBreath1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[21].clipName
-      value: HealthyBreath2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[22].clipName
-      value: HealthyBreath3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[23].clipName
-      value: HealthyBreath4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[24].clipName
-      value: EnterLeft
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[25].clipName
-      value: EnterRight
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[26].clipName
-      value: SpawnMum1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[27].clipName
-      value: SpawnMum2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[28].clipName
-      value: SpawnMum3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[29].clipName
-      value: UnhealthyBreath1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[30].clipName
-      value: UnhealthyBreath2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[31].clipName
-      value: UnhealthyBreath3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[32].clipName
-      value: UnhealthyBreath4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[33].clipName
-      value: UnhealthyBreath5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: backgroundMusicList.Array.data[1].clipName
-      value: GameMusic1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: backgroundMusicList.Array.data[2].clipName
-      value: GameMusic2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[1].normalizedVolume
-      value: 0.706
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[3].normalizedVolume
-      value: 0.615
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[5].normalizedVolume
+      propertyPath: soundEffectList.Array.data[0].isUI
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[6].normalizedVolume
-      value: 0.385
+      propertyPath: soundEffectList.Array.data[1].isUI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[7].normalizedVolume
-      value: 0.5
+      propertyPath: soundEffectList.Array.data[2].isUI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[8].normalizedVolume
-      value: 0.5
+      propertyPath: soundEffectList.Array.data[3].isUI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[9].normalizedVolume
-      value: 0.5
+      propertyPath: soundEffectList.Array.data[4].isUI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[10].normalizedVolume
-      value: 0.5
+      propertyPath: soundEffectList.Array.data[5].isUI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[11].normalizedVolume
-      value: 0.294
+      propertyPath: soundEffectList.Array.data[6].isUI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[12].normalizedVolume
-      value: 0.5
+      propertyPath: soundEffectList.Array.data[18].isUI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[13].normalizedVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[14].normalizedVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[15].normalizedVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[16].normalizedVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[17].normalizedVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[18].normalizedVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[19].normalizedVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[20].normalizedVolume
-      value: 0.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[21].normalizedVolume
-      value: 0.811
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[22].normalizedVolume
-      value: 0.839
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[23].normalizedVolume
-      value: 0.853
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[24].normalizedVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[25].normalizedVolume
-      value: 0.392
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[26].normalizedVolume
-      value: 0.259
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[27].normalizedVolume
-      value: 0.259
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[28].normalizedVolume
-      value: 0.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[29].normalizedVolume
-      value: 0.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[30].normalizedVolume
-      value: 0.748
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[31].normalizedVolume
-      value: 0.776
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[32].normalizedVolume
-      value: 0.755
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: soundEffectList.Array.data[33].normalizedVolume
-      value: 0.783
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630463207455829168, guid: 4fa8d127d79f5f1479d76ec5e16572d9, type: 3}
-      propertyPath: backgroundMusicList.Array.data[2].normalizedVolume
-      value: 0.1
+      propertyPath: soundEffectList.Array.data[19].isUI
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

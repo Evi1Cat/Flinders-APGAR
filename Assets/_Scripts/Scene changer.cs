@@ -16,7 +16,7 @@ public class Scenechanger : MonoBehaviour
         }
         else if (songName != null)
         {
-            AudioManager.Instance.ChangeTrack(sceneName);
+            AudioManager.Instance.ChangeTrack(songName);
         }
     }
 }

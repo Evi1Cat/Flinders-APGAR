@@ -178,36 +178,148 @@ MonoBehaviour:
     stoppedAtPosition: 0
     clip: {fileID: 8300000, guid: 5ed9970e17bfee943a6dff056dc3a9d0, type: 3}
   - clipName: Click 2
-    normalizedVolume: 0.5
+    normalizedVolume: 0.706
     stoppedAtPosition: 0
-    clip: {fileID: 8300000, guid: 99348d26b121bdf40bca2ff30b000207, type: 3}
+    clip: {fileID: 8300000, guid: 622df6012652bdb498c7ec99b1b8a532, type: 3}
   - clipName: Click 3
     normalizedVolume: 0.5
     stoppedAtPosition: 0
-    clip: {fileID: 8300000, guid: 030515f205b54fc478961cbe39c4e75e, type: 3}
+    clip: {fileID: 8300000, guid: 70e02441ad3cd8f488092b6a4933e446, type: 3}
   - clipName: Click 4
-    normalizedVolume: 0.5
+    normalizedVolume: 0.615
     stoppedAtPosition: 0
-    clip: {fileID: 8300000, guid: 9df4c2e414fd7d847978300d2a2b0213, type: 3}
+    clip: {fileID: 8300000, guid: 3cdf6946b7f8a1549ab339405d1c0146, type: 3}
   - clipName: Click 5
     normalizedVolume: 0.5
     stoppedAtPosition: 0
     clip: {fileID: 8300000, guid: 0e6d4d48fef8bd34f9a18cc6b7ed156c, type: 3}
   - clipName: Click 6
-    normalizedVolume: 0.5
+    normalizedVolume: 1
     stoppedAtPosition: 0
-    clip: {fileID: 8300000, guid: 05b517e735c2cec4abd77c440b4c76ad, type: 3}
+    clip: {fileID: 8300000, guid: a3723b260c560944ca45ec5b066bc871, type: 3}
   - clipName: Click 7
+    normalizedVolume: 0.385
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 4fb135d3c45ee7343ba34122f8adc35f, type: 3}
+  - clipName: BabyCry1
     normalizedVolume: 0.5
     stoppedAtPosition: 0
-    clip: {fileID: 8300000, guid: 8c258dca7e08fb1438113b0b75348f71, type: 3}
+    clip: {fileID: 8300000, guid: 94244e4581dc6cc4ab25214d816c8c8b, type: 3}
+  - clipName: BabyCry2
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: cbf6c5f77f3ff4c449d3d2a6e38df009, type: 3}
+  - clipName: BabyCry3
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 6c991fc18690e8241b33a44969593376, type: 3}
+  - clipName: BabyCry4
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 4bd5bbce83228234490960c55c074e84, type: 3}
+  - clipName: BabyDies
+    normalizedVolume: 0.294
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 4169dea32dc90504a940f4f40673b86f, type: 3}
+  - clipName: BabyNoise1
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 3b5a6f161bbef684fb634887f53ef006, type: 3}
+  - clipName: BabyNoise2
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 8c8d904cce6bad44ca9342eb4a985a8b, type: 3}
+  - clipName: BabyNoise3
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 0b1c4fb30708bd04f9d062597c4cface, type: 3}
+  - clipName: BabyNoise4
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: fc8a7c4f933b5d242a72b6fc715eab54, type: 3}
+  - clipName: BabyNoise5
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: e9049bd296331604f9aeae1067867fd8, type: 3}
+  - clipName: BabySaved
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 6cb8db7e856728b479241d7f279940d1, type: 3}
+  - clipName: GameWin1
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: da54348265ffba1408a4667726dab939, type: 3}
+  - clipName: GameWin2
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: f34ae34ffcd54574897393fce509281f, type: 3}
+  - clipName: HealthyBreath1
+    normalizedVolume: 0.79
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 4d8d8f3402efbef499394f3d0aa514ec, type: 3}
+  - clipName: HealthyBreath2
+    normalizedVolume: 0.811
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 9eda96d1efcc40943a75f7f51cef9f6a, type: 3}
+  - clipName: HealthyBreath3
+    normalizedVolume: 0.839
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 52da697c9a5def948872914649ad8e58, type: 3}
+  - clipName: HealthyBreath4
+    normalizedVolume: 0.853
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 5bc28b1da2997ee418e83c5b10b8df29, type: 3}
+  - clipName: EnterLeft
+    normalizedVolume: 0.5
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 1e2804d0aac973f429ece588d892ce5a, type: 3}
+  - clipName: EnterRight
+    normalizedVolume: 0.392
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: ac1df122ec34ea842b798a20a274e4c3, type: 3}
+  - clipName: SpawnMum1
+    normalizedVolume: 0.259
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: a96ed24e5140588408199898ffd2280b, type: 3}
+  - clipName: SpawnMum2
+    normalizedVolume: 0.259
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: b48fdfa1a48fc0f4aa8a8244739462c6, type: 3}
+  - clipName: SpawnMum3
+    normalizedVolume: 0.28
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 075e9b2f66c9ddc458f724206d9c3747, type: 3}
+  - clipName: UnhealthyBreath1
+    normalizedVolume: 0.72
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: a151098b31026eb488bbbc2080b5f405, type: 3}
+  - clipName: UnhealthyBreath2
+    normalizedVolume: 0.748
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 3f00c2acb000b36428ccb4e2a5573f76, type: 3}
+  - clipName: UnhealthyBreath3
+    normalizedVolume: 0.776
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: 60ec46edffaf0d146ac444916701e290, type: 3}
+  - clipName: UnhealthyBreath4
+    normalizedVolume: 0.755
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: cbbb99bc5480f3f42b222760602153f8, type: 3}
+  - clipName: UnhealthyBreath5
+    normalizedVolume: 0.783
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: d17cd85e7b71217438eb48aee31ea111, type: 3}
   backgroundMusicList:
   - clipName: MenuMusic
     normalizedVolume: 0.2
     stoppedAtPosition: 0
-    clip: {fileID: 8300000, guid: 17f1b925d02ede541a96c2fc895f18e3, type: 3}
-  - clipName: GameMusic
+    clip: {fileID: 8300000, guid: 4be89ebd6b16776489ff0dcce4253d2e, type: 3}
+  - clipName: GameMusic1
     normalizedVolume: 0.05
     stoppedAtPosition: 0
-    clip: {fileID: 8300000, guid: c4c05b5b6a5ff0c45b47e851320a41c2, type: 3}
+    clip: {fileID: 8300000, guid: 437b567b9abb6b84f93c63413be07798, type: 3}
+  - clipName: GameMusic2
+    normalizedVolume: 0.1
+    stoppedAtPosition: 0
+    clip: {fileID: 8300000, guid: f9d551f85318c6c4a828e638ea1a8a7f, type: 3}
   masterMixer: {fileID: 24100000, guid: 2f8d8db8143b0d841ba08b7b359e6422, type: 2}

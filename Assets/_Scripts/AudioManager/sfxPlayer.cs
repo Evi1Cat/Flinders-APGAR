@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class sfxPlayer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public bool isUI;
+    [SerializeField] AudioMixerGroup ui, gamesfx;
     void Start()
     {
         
@@ -11,9 +13,18 @@ public class sfxPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isUI)
+        {
+            GetComponent<AudioSource>().outputAudioMixerGroup = ui;
+        }
+        else
+        {
+            GetComponent<AudioSource>().outputAudioMixerGroup = gamesfx;
+        }
         if (!GetComponent<AudioSource>().isPlaying)
         {
             gameObject.SetActive(false);
+            isUI = false;
         }
     }
 }

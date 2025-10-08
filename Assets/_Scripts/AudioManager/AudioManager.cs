@@ -20,14 +20,18 @@ public class AudioManager : MonoBehaviour
     {
         if(Instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
-        Instance = this;
-        DontDestroyOnLoad(this);
-
-        for(int i = 0; i < sfxPoolSize; i++)
+        else
         {
-            AddToPool();
+
+            Instance = this;
+            DontDestroyOnLoad(this);
+
+            for (int i = 0; i < sfxPoolSize; i++)
+            {
+                AddToPool();
+            }
         }
     }
     private void Start()
@@ -78,13 +82,14 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioSetting x in backgroundMusicList)
         {
+            //Debug.Log(x.clipName + " - " + trackName + " | " + (x.clipName == trackName));
             if (x.clipName == trackName)
             {
                 ChangeTrack(x.clip);
             }
         }
     }
-    public void PlaySoundEffect(AudioClip newSFX)
+    public void PlaySoundEffect(AudioClip newSFX, bool isUI)
     {
         for(int i = 0; i < sfxPool.Count; i++)
         {
@@ -99,13 +104,17 @@ public class AudioManager : MonoBehaviour
                     }
                 }
                 sfxPool[i].gameObject.SetActive(true);
+                if(isUI)
+                {
+                    sfxPool[i].GetComponent<sfxPlayer>().isUI = true;
+                }
                 sfxPool[i].Play();
                 //Debug.Log("Playing " + newSFX.name + " on " + sfxPool[i].gameObject.name);
                 return;
             }
         }
         AddToPool();
-        PlaySoundEffect(newSFX);
+        PlaySoundEffect(newSFX, isUI);
     }
     public void PlaySoundEffect(string newSFX)
     {
@@ -113,7 +122,7 @@ public class AudioManager : MonoBehaviour
         {
             if (x.clipName == newSFX)
             {
-                PlaySoundEffect(x.clip);
+                PlaySoundEffect(x.clip, x.isUI);
             }
         }
     }
@@ -203,4 +212,5 @@ public class AudioSetting
     [SerializeField][Range(0f,1f)] public float normalizedVolume;
     [SerializeField] public float stoppedAtPosition;
     [SerializeField] public AudioClip clip;
+    [SerializeField] public bool isUI;
 }
