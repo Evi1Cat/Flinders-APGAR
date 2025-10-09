@@ -1,11 +1,14 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class Opencrib : MonoBehaviour
 {
     public static Opencrib Instance;
     [SerializeField] private TMP_Text pulse, irritability, muscleTone, respiratory, timerText;
+    
+    [SerializeField] private VideoPlayer pulsePlayer;
     [SerializeField] private Babycontroller baby;
 
     private Crib openedCrib = null;
@@ -94,6 +97,7 @@ public class Opencrib : MonoBehaviour
             baby.SetSkinColour(currentBaby.CheckSkinColour());
             baby.SetSkinBlue(currentBaby.Check_Apgar(), currentBaby.CheckSkinColour(), alreadyOpen);
             pulse.text = "" + Mathf.Floor(currentBaby.Check_aPgar());
+            pulsePlayer.playbackSpeed = currentBaby.Check_aPgar()/60f;
             baby.UpdateLimbMovement(currentBaby.Check_apgAr());
             baby.StartBreathing(currentBaby.Check_apgaR());
         }

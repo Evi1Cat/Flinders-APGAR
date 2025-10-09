@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Video;
 using Random = UnityEngine.Random;
 
 public class Babycontroller : MonoBehaviour
@@ -39,7 +40,6 @@ public class Babycontroller : MonoBehaviour
     [SerializeField] TweenVars handMoveVars;
     [SerializeField] Vector3 starPos, endPos;
     [SerializeField] GameObject hand;
-    private TweenBase faceFaceTween;
     [Header("Baby Variables")]
     [SerializeField] public SkinVariants[] skinVariations;
     void Awake()
