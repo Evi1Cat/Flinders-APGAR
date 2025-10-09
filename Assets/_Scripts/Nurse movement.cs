@@ -23,35 +23,7 @@ public class Nursemovement : MonoBehaviour
 
     private void MoveToNextPoint()
     {
-        /*if (path[1] && path[2])
-        {
-            Vector3 firstDIff = (Vector3)(transform.position - path[1]?.gameObject.transform.position);
-            Vector3 secondDIff = (Vector3)(path[1]?.gameObject.transform.position - path[2]?.gameObject.transform.position);
-            if (firstDIff.x != secondDIff.x && firstDIff.y != secondDIff.y)
-            {
-                float lookTo = 0f;
-                if (firstDIff.x == 0)
-                {
-                    if (secondDIff.y > 0)
-                    {
-                        lookTo = 180f;
-                    }
-                }
-                else if (firstDIff.y == 0)
-                {
-                    if (secondDIff.x > 0)
-                    {
-                        lookTo = 90f;
-                    }
-                    if (secondDIff.x > 0)
-                    {
-                        lookTo = 270f;
-                    }
-                }
-                Tween.LocalRotation(transform, new Vector3(0, 0, lookTo), nurseTweens[1].duration, nurseTweens[1].duration / 2, turnTweenCurve);
-            }
-        }*/
-
+        Rotate();
         if (path.Count > 1)
         {
             Tween.Position(transform, path[0].transform.position, nurseTweens[1].duration, nurseTweens[1].delay, nurseTweens[1].easeCurve, completeCallback: MoveToNextPoint);
@@ -87,6 +59,7 @@ public class Nursemovement : MonoBehaviour
     {
         if (path.Count > 1)
         {
+            Rotate();
             Tween.Position(transform, path[0].transform.position, nurseTweens[1].duration, nurseTweens[1].delay, nurseTweens[1].easeCurve, completeCallback: Leave);
         }
         else
@@ -94,6 +67,48 @@ public class Nursemovement : MonoBehaviour
             Tween.Position(transform, path[0].transform.position, nurseTweens[1].duration, nurseTweens[1].delay, nurseTweens[1].easeCurve, completeCallback: Destroy);
         }
         path.RemoveAt(0);
+    }
+    private void Rotate()
+    {
+        //Debug.Log(path.Count);
+        if (path.Count >= 2)
+        {
+            Vector3 firstDIff = new(-1, -1, -1), secondDIff = new(-1, -1, -1);
+            firstDIff = transform.position - path[0].gameObject.transform.position;
+            secondDIff = path[0].gameObject.transform.position - path[1].gameObject.transform.position;
+            Debug.Log(firstDIff + " --- " + secondDIff);
+            if (firstDIff.x != secondDIff.x && firstDIff.y != secondDIff.y)
+            {
+                float lookTo = 0f;
+                if (firstDIff.x == 0)
+                {
+                    if (secondDIff.x > 0)
+                    {
+                        Debug.Log("Look up");
+                        lookTo = 270f;
+                    }
+                    if (secondDIff.x < 0)
+                    {
+                        Debug.Log("Look up");
+                        lookTo = 90f;
+                    }
+                }
+                else if (firstDIff.y == 0)
+                {
+                    if (secondDIff.y > 0)
+                    {
+                        Debug.Log("Look right");
+                        lookTo = 0f;
+                    }
+                    if (secondDIff.y < 0)
+                    {
+                        Debug.Log("Look left");
+                        lookTo = 180f;
+                    }
+                }
+                Tween.Rotation(transform, new Vector3(0, 0, lookTo), nurseTweens[1].duration, nurseTweens[1].duration / 2, turnTweenCurve);
+            }
+        }
     }
     private void Destroy()
     {

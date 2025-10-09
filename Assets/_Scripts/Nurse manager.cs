@@ -28,11 +28,13 @@ public class Nursemanager : MonoBehaviour
             if (deliverBaby)
             {
                 newNurse.AddPath(MakePath(targetCrib, deliverNode), targetCrib);
+                newNurse.transform.eulerAngles = new Vector3(0,0, 90);
                 AudioManager.Instance.PlaySoundEffect("EnterLeft");
             }
             else
             {
                 newNurse.AddPath(MakePath(targetCrib, retrieveNode), targetCrib);
+                newNurse.transform.eulerAngles = new Vector3(0,0, 270);
                 AudioManager.Instance.PlaySoundEffect("EnterRight");
             }
         }
