@@ -8,8 +8,8 @@ public class BabyInputStream : MonoBehaviour
     [SerializeField] private float babyTimer = 60;
     [SerializeField][Range(0f, 1f)] private float spawnVariation;
     [SerializeField] private Crib[] cribList;
-    private int babiesSaved = 0;
     private float timer = 0;
+    private int currentBabies = 0;
     public bool activeGame = false;
     void Start()
     {
@@ -26,18 +26,11 @@ public class BabyInputStream : MonoBehaviour
             //Debug.Log(timer);
             if (timer < 0)
             {
-                float currentBabies = 0;
-                foreach(Crib x in cribList)
-                {
-                    if (x.Occupied())
-                    {
-                        currentBabies++;
-                    }
-                }
+                CheckCurrentBabies();
                 timer = Mathf.Pow((currentBabies - GameManager.instance.babySettings.preferredBabiesOnScreen) / 1.2f, 3f) + (babyTimer * Random.Range(1f - spawnVariation, 1f + spawnVariation));
                 //Debug.Log(timer);
 
-                
+
                 int index = Random.Range(0, cribList.Length);
                 bool roomFound = false;
                 int i = index;
@@ -67,9 +60,27 @@ public class BabyInputStream : MonoBehaviour
             }
         }
     }
-
-    public void Score(int x)
+    private void CheckCurrentBabies()
     {
-        babiesSaved += x;
+        currentBabies = 0;
+        foreach (Crib x in cribList)
+        {
+            if (x.Occupied() || x.nurseOnTheWay)
+            {
+                currentBabies++;
+            }
+        }
+        //Debug.Log(currentBabies + " current babies");
+    }
+
+    public void RecalculateTimer()
+    {
+        //Debug.Log(timer);
+        float x = Mathf.Pow((currentBabies - GameManager.instance.babySettings.preferredBabiesOnScreen) / 1.2f, 3f) + (babyTimer * Random.Range(1f - spawnVariation, 1f + spawnVariation));
+        float percent = timer / x;
+        //Debug.Log(timer + " / " + x +" = "+ percent);
+        CheckCurrentBabies();
+        timer = (Mathf.Pow((currentBabies - GameManager.instance.babySettings.preferredBabiesOnScreen-1) / 1.2f, 3f) + (babyTimer * Random.Range(1f - spawnVariation, 1f + spawnVariation)))*percent;
+        //Debug.Log(timer);
     }
 }

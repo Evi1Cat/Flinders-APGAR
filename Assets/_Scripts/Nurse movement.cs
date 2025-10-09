@@ -40,11 +40,12 @@ public class Nursemovement : MonoBehaviour
         if (targetCrib.Occupied())
         {
             targetCrib.ReleaseBaby();
+            BabyInputStream.instance.RecalculateTimer();
         }
         else
         {
             targetCrib.NewBaby();
-            AudioManager.Instance.PlaySoundEffect("SpawnMum"+Random.Range(1,4));
+            AudioManager.Instance.PlaySoundEffect("SpawnMum" + Random.Range(1, 4));
         }
         targetCrib.nurseOnTheWay = false;
         targetCrib.CloseCrib();
@@ -76,7 +77,7 @@ public class Nursemovement : MonoBehaviour
             Vector3 firstDIff = new(-1, -1, -1), secondDIff = new(-1, -1, -1);
             firstDIff = transform.position - path[0].gameObject.transform.position;
             secondDIff = path[0].gameObject.transform.position - path[1].gameObject.transform.position;
-            Debug.Log(firstDIff + " --- " + secondDIff);
+            //Debug.Log(firstDIff + " --- " + secondDIff);
             if (firstDIff.x != secondDIff.x && firstDIff.y != secondDIff.y)
             {
                 float lookTo = 0f;
@@ -84,12 +85,12 @@ public class Nursemovement : MonoBehaviour
                 {
                     if (secondDIff.x > 0)
                     {
-                        Debug.Log("Look up");
+                        //Debug.Log("Look up");
                         lookTo = 270f;
                     }
                     if (secondDIff.x < 0)
                     {
-                        Debug.Log("Look up");
+                        //Debug.Log("Look up");
                         lookTo = 90f;
                     }
                 }
@@ -97,12 +98,12 @@ public class Nursemovement : MonoBehaviour
                 {
                     if (secondDIff.y > 0)
                     {
-                        Debug.Log("Look right");
+                        //Debug.Log("Look right");
                         lookTo = 0f;
                     }
                     if (secondDIff.y < 0)
                     {
-                        Debug.Log("Look left");
+                        //Debug.Log("Look left");
                         lookTo = 180f;
                     }
                 }
