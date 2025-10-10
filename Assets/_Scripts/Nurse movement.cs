@@ -6,18 +6,22 @@ public class Nursemovement : MonoBehaviour
 {
     //[Range(0, 100)] public int curvePercent = 0;
     public TweenVars[] nurseTweens = new TweenVars[3];
+    [SerializeField] Animator animController;
     [SerializeField] AnimationCurve turnTweenCurve;
+    private float animSpeed;
     private Crib targetCrib = null;
     private Nursepathnode home, current;
     private List<Nursepathnode> path;
     public void AddPath(List<Nursepathnode> x, Crib y)
     {
+        animSpeed = animController.speed;
         path = x;
         targetCrib = y;
         transform.position = path[0].transform.position;
         home = path[0];
         path.RemoveAt(0);
         Tween.Position(transform, path[0].transform.position, nurseTweens[0].duration, nurseTweens[0].delay, nurseTweens[0].easeCurve, completeCallback: MoveToNextPoint);
+        Tween.Value(0f, animSpeed, SetAnimSpeed, nurseTweens[0].duration, nurseTweens[0].delay, nurseTweens[0].easeCurve);
         path.RemoveAt(0);
     }
 
@@ -31,6 +35,7 @@ public class Nursemovement : MonoBehaviour
         else
         {
             Tween.Position(transform, path[0].transform.position, nurseTweens[2].duration, nurseTweens[2].delay, nurseTweens[2].easeCurve, completeCallback: PlaceBaby);
+            Tween.Value(animSpeed, 0f, SetAnimSpeed, nurseTweens[2].duration, nurseTweens[2].delay, nurseTweens[2].easeCurve);
         }
         current = path[0];
         path.RemoveAt(0);
@@ -53,6 +58,7 @@ public class Nursemovement : MonoBehaviour
         path = Nursemanager.instance.MakePath(home, current);
         //Debug.Log(path);
         Tween.Position(transform, path[0].transform.position, nurseTweens[0].duration, 0.5f, nurseTweens[0].easeCurve, completeCallback: Leave);
+        Tween.Value(0f, animSpeed, SetAnimSpeed, nurseTweens[0].duration, 0.5f, nurseTweens[0].easeCurve);
         path.RemoveAt(0);
         
     }
@@ -111,15 +117,12 @@ public class Nursemovement : MonoBehaviour
             }
         }
     }
+    private void SetAnimSpeed(float x)
+    {
+        animController.speed = x;
+    }
     private void Destroy()
     {
         Destroy(gameObject);
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
