@@ -7460,7 +7460,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   starPos: {x: -4.45, y: -1.67, z: 0}
-  endPos: {x: -0.78, y: -0.03, z: 0}
+  endPos: {x: -1.63, y: -0.79, z: 0}
   hand: {fileID: 255396214}
   skinVariations:
   - colour: white
