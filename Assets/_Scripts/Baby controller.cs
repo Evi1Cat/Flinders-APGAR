@@ -40,6 +40,7 @@ public class Babycontroller : MonoBehaviour
     [SerializeField] TweenVars handMoveVars;
     [SerializeField] Vector3 starPos, endPos;
     [SerializeField] GameObject hand;
+    private TweenBase handMove, handAlpha;
     [Header("Baby Variables")]
     [SerializeField] public SkinVariants[] skinVariations;
     void Awake()
@@ -264,13 +265,13 @@ public class Babycontroller : MonoBehaviour
     private IEnumerator TweenHandAwayFromChest(float wait)
     {
         yield return new WaitForSeconds(wait);
-        Tween.LocalPosition(hand.transform,endPos, starPos, handMoveVars.duration, handMoveVars.delay, handMoveVars.easeCurve);
+        Tween.LocalPosition(hand.transform, endPos, starPos, handMoveVars.duration, handMoveVars.delay, handMoveVars.easeCurve);
         Tween.Value(0f, 1f, (x) => SetFaceAlpha(x, hand.GetComponent<SpriteRenderer>(), false), handFadeVars.duration, handFadeVars.delay, handFadeVars.easeCurve);
     }
 
     private void SetFace(int babyGrimace)
     {
-        
+
         switch (babyGrimace)
         {
             case 0:
@@ -281,7 +282,7 @@ public class Babycontroller : MonoBehaviour
                 break;
             case 2:
                 ChooseFace(false, false, true, 0);
-                AudioManager.Instance.PlaySoundEffect("BabyCry"+Random.Range(1,5));
+                AudioManager.Instance.PlaySoundEffect("BabyCry" + Random.Range(1, 5));
                 break;
         }
     }
@@ -289,14 +290,17 @@ public class Babycontroller : MonoBehaviour
     {
         if (replay < 2)
         {
-            Tween.Value(faceRenderers[0].color.a, 1f, (x)=> SetFaceAlpha(x, faceRenderers[0], nuetral), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve, completeCallback: ()=> ChooseFace(true, false, false, replay+1));
-            
-            Tween.Value(faceRenderers[1].color.a, 1f, (x)=> SetFaceAlpha(x, faceRenderers[1], peeved), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve);
-            Tween.Value(faceRenderers[2].color.a, 1f, (x)=> SetFaceAlpha(x, faceRenderers[2], upset), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve);
+            Tween.Value(faceRenderers[0].color.a, 1f, (x) => SetFaceAlpha(x, faceRenderers[0], nuetral), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve, completeCallback: () => ChooseFace(true, false, false, replay + 1));
+
+            Tween.Value(faceRenderers[1].color.a, 1f, (x) => SetFaceAlpha(x, faceRenderers[1], peeved), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve);
+            Tween.Value(faceRenderers[2].color.a, 1f, (x) => SetFaceAlpha(x, faceRenderers[2], upset), faceFadeVars.duration, faceFadeVars.delay, faceFadeVars.easeCurve);
         }
         else
         {
-            StartCoroutine(TweenHandAwayFromChest(0));
+            if(hand.activeInHierarchy)
+            {
+                StartCoroutine(TweenHandAwayFromChest(0));
+            }
         }
     }
     private void SetFaceAlpha(float x, SpriteRenderer face, bool setActive)
@@ -311,6 +315,14 @@ public class Babycontroller : MonoBehaviour
             temp.a = 1f - x;
         }
         face.color = temp;
+    }
+        
+    public void CancellGrimaceTween()
+    {
+        handMove?.Cancel();
+        handAlpha?.Cancel();
+        SetFaceAlpha(0, hand.GetComponent<SpriteRenderer>(), true);
+        hand.transform.localPosition = starPos;
     }
 }
 

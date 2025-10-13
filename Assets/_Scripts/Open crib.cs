@@ -44,6 +44,7 @@ public class Opencrib : MonoBehaviour
             openedCrib = refer;
             currentBaby = x;
             openedCrib.timerTick += UpdateText;
+            Babycontroller.Instance.CancellGrimaceTween();
         }
     }
 
